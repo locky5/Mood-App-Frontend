@@ -1,1 +1,18 @@
+<<<<<<< HEAD
 
+=======
+.main-flex {
+  display: flex;
+}
+
+.post-container {
+  border: solid 1px;
+  width: 75%;
+}
+
+.profile-container {
+  border: solid 1px;
+  width: 25%;
+  height: 750px;
+}
+>>>>>>> aaron

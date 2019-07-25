@@ -32,6 +32,7 @@
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  display: flex;
 }
 
 /* Links inside the navbar */
@@ -48,5 +49,10 @@
 .navbar a:hover {
   background: #ddd;
   color: black;
+}
+
+#login-form {
+  margin-top: 12px;
+  margin-left: 900px;
 }
 

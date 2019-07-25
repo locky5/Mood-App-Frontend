@@ -24,7 +24,7 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state.username)
+    console.log(this.props.username)
     return (
       <div className="main-flex">
         <ProfileContainer />

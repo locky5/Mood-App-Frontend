@@ -41,11 +41,19 @@ class App extends React.Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    if (this.state.password === "123") {
+      alert('success!')
+    }
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <NavBar handleChange={this.handleChange}/>
-        {this.state.username ? <MainContainer username={this.state.username}/> : <MainContainer/>}
+        <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+        <MainContainer username={this.state.username}/>
         {/*<Chat {...this.state} />*/}
       </div>
     )

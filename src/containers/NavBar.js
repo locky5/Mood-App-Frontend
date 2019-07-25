@@ -5,7 +5,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="NavBar">
-        <LoginForm handleChange={this.props.handleChange}/>
+        <LoginForm handleChange={this.props.handleChange} handleSubmit={this.props.handleSubmit}/>
       </div>
     )
   }

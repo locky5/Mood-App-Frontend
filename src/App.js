@@ -9,42 +9,51 @@ import SockJS from 'sockjs-client'
 class App extends React.Component {
 
   state = {
-    username: 'kdai'
+    username: "",
+    password: "",
+    loggedIn: false,
+    userId: null
   }
 
-  // constructor(props) {
-  //   super(props)
-  //
-  //   const sock = new SockJS('https://chat-server.azurewebsites.net/chat')
-  //
-  //   sock.onopen = () => {
-  //     console.log('connection open')
-  //   }
-  //
-  //   sock.onmessage = (e) => {
-  //     console.log('message received: ', e.data)
-  //   }
-  //
-  //   sock.onclose = () => {
-  //     console.log('closed')
-  //   }
-  //
-  //   this.state = {
-  //     actions: sock,
-  //     messages: []
-  //   }
-  // }
-
+  
   handleChange = (event) => {
+    console.log(event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    if (this.state.password === "123") {
+      alert('success!')
+    }
+
+    fetch('http://localhost:3000/api/v1/users', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: this.state.username,
+        password: this.state.password
+      })
+    })
+    .then(resp => resp.json())
+    .then(user => {
+      this.setState({
+        loggedIn: true,
+        userId: user.id
+      })
+    })
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <NavBar handleChange={this.handleChange}/>
+        <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
         {this.state.username ? <MainContainer username={this.state.username}/> : <MainContainer/>}
         {/*<Chat {...this.state} />*/}
       </div>
@@ -53,3 +62,26 @@ class App extends React.Component {
 }
 
 export default App;
+
+// constructor(props) {
+//   super(props)
+//
+//   const sock = new SockJS('https://chat-server.azurewebsites.net/chat')
+//
+//   sock.onopen = () => {
+//     console.log('connection open')
+//   }
+//
+//   sock.onmessage = (e) => {
+//     console.log('message received: ', e.data)
+//   }
+//
+//   sock.onclose = () => {
+//     console.log('closed')
+//   }
+//
+//   this.state = {
+//     actions: sock,
+//     messages: []
+//   }
+// }

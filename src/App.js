@@ -5,6 +5,7 @@ import NavBar from './containers/NavBar'
 import MainContainer from './containers/MainContainer'
 import Chat from './components/Chat'
 import SockJS from 'sockjs-client'
+import Graph from './components/Graph'
 
 class App extends React.Component {
 
@@ -15,7 +16,7 @@ class App extends React.Component {
     userId: null
   }
 
-  
+
   handleChange = (event) => {
     console.log(event.target.value)
     this.setState({
@@ -56,6 +57,7 @@ class App extends React.Component {
         <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
         <MainContainer username={this.state.username}/>
         {/*<Chat {...this.state} />*/}
+        <Graph />
       </div>
     )
   }

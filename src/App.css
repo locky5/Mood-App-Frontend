@@ -1,10 +1,12 @@
-.main-flex {
+.main {
   display: flex;
+  margin-top: 30px;
 }
 
 .post-container {
   border: solid 1px;
   width: 75%;
+  display: flex;
 }
 
 .profile-container {
@@ -12,3 +14,39 @@
   width: 25%;
   height: 750px;
 }
+
+.post {
+  width: 40%;
+  height: 200px;
+  border: solid 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* The navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+

@@ -4,12 +4,12 @@ import Post from '../components/Post'
 class PostContainer extends React.Component {
 
   renderPosts = () => {
-    return this.props.posts.map(post => <Post description={post.description}/>)
+    return this.props.posts.map(post => <Post key={post.id} description={post.description} clickPost={this.props.clickPost} />)
   }
 
   render() {
     return (
-      <div className="PostContainer">
+      <div className="post-container">
         {this.renderPosts()}
       </div>
     )

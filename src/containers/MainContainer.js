@@ -23,12 +23,16 @@ class MainContainer extends React.Component {
       )
   }
 
+  clickPost = () => {
+    //Routes to post page/comment feed
+  }
+
   render() {
     console.log(this.props.username)
     return (
-      <div className="main-flex">
+      <div className="main">
         <ProfileContainer />
-        {this.state.posts ? <PostContainer posts={this.state.posts}/> : <LoadingPage/>}
+        {this.state.posts ? <PostContainer posts={this.state.posts} clickPost={this.clickPost} /> : <LoadingPage/>}
       </div>
     )
   }

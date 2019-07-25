@@ -1,9 +1,27 @@
 import React from 'react'
 import ProfileContainer from './ProfileContainer'
 import PostContainer from './PostContainer'
-import MainContainer from './MainContainer'
 
 class MainContainer extends React.Component {
+
+  state = {
+    data: null
+  }
+
+  componentDidMount() {
+    this.renderData()
+  }
+
+  renderData = () => {
+    fetch()
+      .then(res => res.json)
+      .then(data =>
+        this.setState({
+
+        })
+      )
+  }
+
   render() {
     return (
       <div>

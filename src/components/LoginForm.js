@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
           <input name="username" onChange={this.props.handleChange}/>
           <input name="password" onChange={this.props.handleChange}/>
-          <button type="submit">Submit</button>
+          <input type="submit" value="Submit"></input>
         </form>
       </div>
     )

@@ -8,6 +8,10 @@ import SockJS from 'sockjs-client'
 
 class App extends React.Component {
 
+  state = {
+    username: 'kdai'
+  }
+
   // constructor(props) {
   //   super(props)
   //
@@ -31,11 +35,18 @@ class App extends React.Component {
   //   }
   // }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <NavBar />
-        <MainContainer />
+        <NavBar handleChange={this.handleChange}/>
+        {this.state.username ? <MainContainer username={this.state.username}/> : <MainContainer/>}
+        {/*<Chat {...this.state} />*/}
       </div>
     )
   }

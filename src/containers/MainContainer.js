@@ -14,7 +14,7 @@ class MainContainer extends React.Component {
   }
 
   renderData = () => {
-    fetch('http://localhost:3000/posts')
+    fetch('http://localhost:3000/api/v1/posts')
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -24,7 +24,7 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state.posts)
+    console.log(this.state.username)
     return (
       <div className="main-flex">
         <ProfileContainer />

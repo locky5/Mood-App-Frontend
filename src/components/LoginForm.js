@@ -2,12 +2,6 @@ import React from 'react'
 
 class LoginForm extends React.Component {
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
   handleSubmit = (event) => {
     event.preventDefault()
     if (this.state.password === "123") {
@@ -19,8 +13,8 @@ class LoginForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input name="username" onChange={this.handleChange}/>
-          <input name="password" onChange={this.handleChange}/>
+          <input name="username" onChange={this.props.handleChange}/>
+          <input name="password" onChange={this.props.handleChange}/>
           <button type="submit">Submit</button>
         </form>
       </div>

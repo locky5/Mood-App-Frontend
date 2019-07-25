@@ -3,7 +3,8 @@ import React from 'react'
 class ProfileCard extends React.Component {
     render() {
         return (
-            <div></div>
+          <div>
+          </div>
         )
     }
 }

@@ -46,6 +46,19 @@ class App extends React.Component {
     if (this.state.password === "123") {
       alert('success!')
     }
+
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.username,
+        password: this.state.password
+      })
+    })
+      .then(res => console.log(res))
   }
 
   render() {

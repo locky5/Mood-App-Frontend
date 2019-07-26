@@ -29,7 +29,6 @@ class Post extends React.Component {
       <div className="post" onClick={this.props.clickPost}>
         <h1>{this.props.description}</h1>
         {this.state.data ? this.getMoodName() : null}
-        <h1>{this.props.createdAt.split('T').join(' ').slice(0,-5)}</h1>
       </div>
     )
   }

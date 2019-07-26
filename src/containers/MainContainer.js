@@ -6,7 +6,8 @@ import LoadingPage from '../components/LoadingPage'
 class MainContainer extends React.Component {
 
   state = {
-    posts: null
+    posts: null,
+    form: 1
   }
 
   componentDidMount() {

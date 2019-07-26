@@ -14,9 +14,31 @@ class App extends React.Component {
     username: "",
     password: "",
     loggedIn: false,
-    userId: null
+    userId: null,
+    posts: null,
+    moods: null
   }
 
+  componentDidMount() {
+    this.renderData()
+  }
+
+  renderData = () => {
+    fetch('http://localhost:3000/api/v1/posts')
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          posts: data
+        })
+      )
+    fetch('http://localhost:3000/api/v1/moods')
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          moods: data
+        })
+      )
+  }
 
   handleChange = (event) => {
     console.log(event.target.value)
@@ -54,14 +76,14 @@ class App extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <Router>
-        <div className="App">
-          <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-          <MainContainer username={this.state.username}/>
-          {/*<Chat {...this.state} />*/}
-          <Graph />
-        </div>
-      </Router>
+    <Router>
+      <div className="App">
+        <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+        <MainContainer username={this.state.username}/>
+        {/*<Chat {...this.state} />*/}
+        {this.state.posts && this.state.moods ? <Graph posts={this.state.posts} moods={this.state.moods}/> : null}
+      </div>
+    </Router>
     )
   }
 }

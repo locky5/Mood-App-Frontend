@@ -7,7 +7,7 @@ export default class Graph extends React.Component {
   render() {
     return (
       <div>
-        <LineChart data={{"2017-05-13": 2, "2017-05-14": 5}}/>
+        <LineChart data={{"2017-05-13 00:00:00 -0800": 2, "2017-05-14 00:00:00 -0800": 5}}/>
       </div>
     )
   }

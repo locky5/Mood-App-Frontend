@@ -7,7 +7,10 @@ class PostContainer extends React.Component {
     return this.props.posts.map(post =>
       <Post
         key={post.id}
-        description={post.description} clickPost={this.props.clickPost} moodId={post.mood_id}
+        id={post.id}
+        description={post.description}
+        likes={post.likes}
+        clickPost={this.props.clickPost} moodId={post.mood_id}
       />
     )
   }

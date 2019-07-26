@@ -6,6 +6,7 @@ import MainContainer from './containers/MainContainer'
 import Chat from './components/Chat'
 import SockJS from 'sockjs-client'
 import Graph from './components/Graph'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 class App extends React.Component {
 
@@ -53,12 +54,14 @@ class App extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <div className="App">
-        <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-        <MainContainer username={this.state.username}/>
-        {/*<Chat {...this.state} />*/}
-        <Graph />
-      </div>
+      <Router>
+        <div className="App">
+          <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+          <MainContainer username={this.state.username}/>
+          {/*<Chat {...this.state} />*/}
+          <Graph />
+        </div>
+      </Router>
     )
   }
 }

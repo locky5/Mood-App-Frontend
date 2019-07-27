@@ -76,14 +76,14 @@ class Post extends React.Component {
       <div className="post" onClick={this.props.clickPost}>
         {
           this.state.data ?
-          <ul>
+          <div className="post-it">
             {/* <li>
               <a href="#">
                 <h2>Title #1</h2>
                 <p>Text Content #1</p>
               </a>
             </li> */}
-            <li>
+            
               <a href="#" style={{background: this.determineColor()}}>
                 <p>{this.props.description}</p>
                 <p>Mood:
@@ -94,8 +94,8 @@ class Post extends React.Component {
                 <button onClick={this.updateLikes}>Like!</button>
                 <p>{this.state.likes}</p>
               </a>
-            </li>
-          </ul>
+            
+          </div>
            :
           null
         }

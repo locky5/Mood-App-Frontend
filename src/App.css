@@ -1,28 +1,38 @@
 .main {
   display: flex;
   margin-top: 30px;
+  width: 100%;
+  border: solid 1px;
 }
+
+/* .app {
+  display: flex;
+} */
 
 .post-container {
   border: solid 1px;
-  width: 75%;
+  width: 80%;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
 }
 
 .profile-container {
   border: solid 1px;
-  width: 25%;
+  width: 20%;
   height: 750px;
 }
 
 .post {
-  width: 30%;
+  width: 32%;
   height: 200px;
   border: solid 1px;
   margin-left: 2px;
   margin-right: 2px;
   margin-top: 2px;
   margin-bottom: 2px;
+  display: flex; 
 }
 
 /* The navigation bar */
@@ -75,18 +85,11 @@ body{
   color:rgb(26, 23, 23);
 }
 
-h2,p{
-  font-size:100%;
-  font-weight:normal;
-}
 
-.post ul,li{
-  list-style:none;
-}
-
-.post ul{
-  overflow:hidden;
+.post-it {
+  /* overflow:hidden; */
   padding:3em;
+  width: 100%;
 }
 
 /* ul li{
@@ -94,12 +97,12 @@ h2,p{
   float:left;
 } */
 
-.post ul li p{
+.post-it p{
   font-family:"Reenie Beanie",arial,sans-serif;
   font-size:180%;
 }
 
-.post ul li a{
+.post-it a{
   text-decoration:none;
   color:#000;
   /*background:#ffc;*/
@@ -121,7 +124,7 @@ h2,p{
   -moz-transform:rotate(-6deg);
 } */
 
-ul li a:hover,ul li a:focus{
+.post-it a:hover,.post-it a:focus{
   -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
   -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
   box-shadow:10px 10px 7px rgba(0,0,0,.7);

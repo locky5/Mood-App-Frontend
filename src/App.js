@@ -13,8 +13,6 @@ import { Route, Switch, Link } from "react-router-dom"
 class App extends React.Component {
 
   state = {
-    username: "",
-    password: "",
     currentUser: null,
     posts: null,
     moods: null
@@ -47,37 +45,7 @@ class App extends React.Component {
       )
   }
 
-  handleChange = (event) => {
-    console.log(event.target.value)
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-
-    fetch('http://localhost:3000/api/v1/signup', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        name: this.state.username,
-        password: this.state.password
-      })
-    })
-    .then(resp => resp.json())
-    .then(response => {
-      if (response.errors) {
-        alert(response.errors)
-      } else {
-        this.setUser(response)
-        }
-      }
-    )
-  }
+  
 
   render() {
     console.log(this.state)
@@ -85,8 +53,8 @@ class App extends React.Component {
       <div className="App">
           <NavBar />
           <Switch>
-            <Route path="/login" render={() => <LoginForm setUser={this.setUser} handleSubmit={this.handleSubmit} handleChange={this.handleChange} />} />
-            <Route path="/signup" render={() => <SignupForm setUser={this.setUser} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>} />
+            <Route path="/login" render={() => <LoginForm setUser={this.setUser}  />} />
+            <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
             <Route path="/posts" render={() => <MainContainer username={this.state.username} />} />
           </Switch>
         {/*<Chat {...this.state} />*/}

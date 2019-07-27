@@ -3,20 +3,27 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './containers/NavBar'
 import MainContainer from './containers/MainContainer'
+import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm'
 import Chat from './components/Chat'
 import SockJS from 'sockjs-client'
 import Graph from './components/Graph'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { Route, Switch, Link } from "react-router-dom"
 
 class App extends React.Component {
 
   state = {
     username: "",
     password: "",
-    loggedIn: false,
-    userId: null,
+    currentUser: null,
     posts: null,
     moods: null
+  }
+
+  setUser = (user) => {
+    this.setState({
+      currentUser: user
+    }, () => {this.props.history.push("/posts")})
   }
 
   componentDidMount() {
@@ -49,11 +56,8 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    if (this.state.password === "123") {
-      alert('success!')
-    }
 
-    fetch('http://localhost:3000/api/v1/users', {
+    fetch('http://localhost:3000/api/v1/signup', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,25 +69,31 @@ class App extends React.Component {
       })
     })
     .then(resp => resp.json())
-    .then(user => {
-      this.setState({
-        loggedIn: true,
-        userId: user.id
-      })
-    })
+    .then(response => {
+      if (response.errors) {
+        alert(response.errors)
+      } else {
+        this.setUser(response)
+        }
+      }
+    )
   }
 
   render() {
     console.log(this.state)
     return (
-    <Router>
       <div className="App">
-        <NavBar handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-        <MainContainer username={this.state.username}/>
+          <NavBar />
+          <Switch>
+            <Route path="/login" render={() => <LoginForm setUser={this.setUser} handleSubmit={this.handleSubmit} handleChange={this.handleChange} />} />
+            <Route path="/signup" render={() => <SignupForm setUser={this.setUser} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>} />
+            <Route path="/posts" render={() => <MainContainer username={this.state.username} />} />
+          </Switch>
         {/*<Chat {...this.state} />*/}
-        {this.state.posts && this.state.moods ? <Graph posts={this.state.posts} moods={this.state.moods}/> : null}
+        <div>
+          {this.state.posts && this.state.moods ? <Graph posts={this.state.posts} moods={this.state.moods}/> : null}
+        </div>
       </div>
-    </Router>
     )
   }
 }

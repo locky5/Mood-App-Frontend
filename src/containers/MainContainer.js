@@ -67,17 +67,17 @@ class MainContainer extends React.Component {
   render() {
     return (
       <div className="main">
-        <ProfileContainer
-          handleChange={this.handleChange} handleFormChange={this.handleFormChange} handleSubmit={this.handleSubmit}
-        />
-        {
-          this.state.posts ?
-          <PostContainer
-            posts={this.state.posts} clickPost={this.clickPost}
+          <ProfileContainer
+            handleChange={this.handleChange} handleFormChange={this.handleFormChange} handleSubmit={this.handleSubmit}
           />
-          :
-          <LoadingPage/>
-        }
+          {
+            this.state.posts ?
+            <PostContainer
+              posts={this.state.posts} clickPost={this.clickPost}
+            />
+            :
+            <LoadingPage/>
+          }
       </div>
     )
   }

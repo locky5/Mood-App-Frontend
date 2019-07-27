@@ -51,9 +51,9 @@ class App extends React.Component {
     console.log(this.state)
     return (
       <div className="App">
-          <NavBar />
+          <NavBar currentUser={this.state.currentUser} />
           <Switch>
-            <Route path="/login" render={() => <LoginForm setUser={this.setUser}  />} />
+            <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
             <Route path="/posts" render={() => <MainContainer username={this.state.username} />} />
           </Switch>

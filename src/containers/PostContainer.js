@@ -33,6 +33,7 @@ class PostContainer extends React.Component {
           moodId={post.mood.id}
           comments={this.state.data.filter(comment => comment.post.id === parseInt(post.id))}
           setStuff={this.props.setStuff}
+          currentUser={this.props.currentUser}
         />
       )
     }
@@ -46,6 +47,7 @@ class PostContainer extends React.Component {
         moodId={post.mood.id}
         comments={this.state.data.filter(comment => comment.post.id === post.id)}
         setStuff={this.props.setStuff}
+        currentUser={this.props.currentUser}
       />
     )
   }

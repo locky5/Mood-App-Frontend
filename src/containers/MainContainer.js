@@ -118,6 +118,7 @@ class MainContainer extends React.Component {
               clickPost={this.clickPost}
               filteredPosts={this.state.filteredPosts}
               setStuff={this.props.setStuff}
+              currentUser={this.props.currentUser}
             />
             :
             <LoadingPage/>

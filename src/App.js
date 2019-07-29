@@ -52,11 +52,43 @@ class App extends React.Component {
   setUser = (user) => {
     this.setState({
       currentUser: user
-    }, () => {this.props.history.push("/posts")})
+    }, () => {
+      localStorage.user_id = user.id
+      this.props.history.push("/posts")
+    })
   }
 
   componentDidMount() {
+    const user_id = localStorage.user_id
+
+    if (user_id) {
+      fetch('http://localhost:3000/api/v1/auto_login', {
+        headers: {
+          "Authorization": user_id
+        }
+      })
+      .then(res => res.json())
+      .then(response => {
+        if (response.errors) {
+          alert(response.errors)
+        } else {
+          this.setState({
+            currentUser: response
+          })
+        }
+      })
+    }
+
     this.renderData()
+  }
+
+  logout = () => {
+    this.setState({
+      currentUser: null
+    }, () => { 
+      localStorage.removeItem("user_id")
+      this.props.history.push("/login") 
+    })
   }
 
   renderData = () => {
@@ -81,7 +113,7 @@ class App extends React.Component {
     console.log(this.state.posts)
     return (
       <div className="App">
-          <NavBar currentUser={this.state.currentUser} />
+          <NavBar currentUser={this.state.currentUser} logout={this.logout} />
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />

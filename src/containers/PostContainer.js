@@ -30,8 +30,8 @@ class PostContainer extends React.Component {
           description={post.description}
           likes={post.likes}
           clickPost={this.props.clickPost}
-          moodId={post.mood_id}
-          comments={this.state.data.filter(comment => comment.post_id === post.id)}
+          moodId={post.mood.id}
+          comments={this.state.data.filter(comment => comment.post.id === post.id)}
         />
       )
     }
@@ -42,7 +42,7 @@ class PostContainer extends React.Component {
         description={post.description}
         likes={post.likes}
         clickPost={this.props.clickPost}
-        moodId={post.mood_id}
+        moodId={post.mood.id}
         comments={this.state.data.filter(comment => comment.post_id === post.id)}
       />
     )

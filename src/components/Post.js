@@ -107,6 +107,7 @@ class Post extends React.Component {
   }
 
   render() {
+    console.log(this.props.moodId)
     return (
       <div className="post" onClick={this.props.clickPost}>
         {

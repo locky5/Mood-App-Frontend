@@ -7,7 +7,7 @@ export default class ThisLineChart extends React.Component {
   createLineGraph = () => {
     for (const post of this.props.posts) {
       let timestamp = post.created_at.split('T').join(' ').slice(0,-5)
-      let value = this.props.moods.filter(mood => mood.id === post.mood_id)[0].value
+      let value = this.props.moods.filter(mood => mood.id === post.mood.id)[0].value
       this.setState({
         [timestamp]: value
       })

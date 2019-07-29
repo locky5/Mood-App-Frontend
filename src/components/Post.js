@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class Post extends React.Component {
 
@@ -113,14 +114,8 @@ class Post extends React.Component {
         {
           this.state.data ?
           <div className="post-it">
-            {/* <li>
-              <a href="#">
-                <h2>Title #1</h2>
-                <p>Text Content #1</p>
-              </a>
-            </li> */}
 
-              <a href="#" style={{background: this.determineColor()}}>
+              <Link to="/postpage" style={{background: this.determineColor()}}>
                 <p>{this.props.description}</p>
                 <p>Mood:
                   {
@@ -128,7 +123,6 @@ class Post extends React.Component {
                   }
                 </p>
                 <button onClick={this.updateLikes}>Like!</button>
-                <button onClick={this.postComment}>Make A Comment</button>
                 <p>{this.state.likes}</p>
                 {
                   this.state.makeComment ?
@@ -148,7 +142,7 @@ class Post extends React.Component {
                   :
                   null
                 }
-              </a>
+              </Link>
 
           </div>
            :

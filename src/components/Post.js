@@ -6,10 +6,7 @@ class Post extends React.Component {
   state = {
     data: null,
     color: '#ffc',
-    likes: this.props.likes,
-    makeComment: false,
-    commentValue: null,
-    comments: this.props.comments
+    likes: this.props.likes
   }
 
   componentDidMount() {
@@ -27,7 +24,6 @@ class Post extends React.Component {
   }
 
   getMoodName = () => {
-    console.log(this.props.moodId)
     return this.state.data.filter(mood => mood.id === this.props.moodId)[0].name
   }
 
@@ -74,40 +70,6 @@ class Post extends React.Component {
       })
   }
 
-  postComment = () => {
-    this.setState({
-      makeComment: !this.state.makeComment
-    })
-  }
-
-  commentValue = (event) => {
-    this.setState({
-      commentValue: event.target.value
-    })
-  }
-
-  handleCommentSubmit = (event) => {
-    event.preventDefault()
-
-    fetch('http://localhost:3000/api/v1/comments', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        description: this.state.commentValue,
-        post_id: this.props.id
-      })
-    })
-      .then(res => res.json())
-      .then(comment =>
-        this.setState({
-          comments: [...this.state.comments, comment]
-        })
-      )
-  }
-
   render() {
     return (
       <div className="post" onClick={this.props.clickPost}>
@@ -115,33 +77,14 @@ class Post extends React.Component {
           this.state.data ?
           <div className="post-it">
 
-              <Link to="/postpage" style={{background: this.determineColor()}}>
+              <Link to='/postpage'
+                style={{background: this.determineColor()}}
+                onClick={() => this.props.setStuff(this.props.id, this.props.comments)}
+              >
                 <p>{this.props.description}</p>
-                <p>Mood:
-                  {
-                    this.getMoodName()
-                  }
+                <p>Mood: {this.getMoodName()}
                 </p>
-                <button onClick={this.updateLikes}>Like!</button>
-                <p>{this.state.likes}</p>
-                {
-                  this.state.makeComment ?
-                  <div>
-                    <form onSubmit={this.handleCommentSubmit}>
-                      <textarea onChange={this.commentValue}></textarea>
-                      <button>Submit Comment</button>
-                    </form>
-                  </div>
-                  :
-                  null
-                }
-                {
-                  this.state.comments ?
-
-                  this.state.comments.map(comment => <p>{comment.description}</p>)
-                  :
-                  null
-                }
+                <button onClick={this.updateLikes}>{this.state.likes} likes!</button>
               </Link>
 
           </div>

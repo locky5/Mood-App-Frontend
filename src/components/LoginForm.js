@@ -43,6 +43,9 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div id="signup">
+        <br></br>
+        <br></br>
+        <br></br>
         <form onSubmit={this.handleSubmit}>
           Username: <input name="username" onChange={this.handleChange} />
           Password: <input name="password" onChange={this.handleChange} />

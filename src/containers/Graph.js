@@ -5,7 +5,6 @@ import ThisPieChart from '../components/ThisPieChart'
 export default class Graph extends React.Component {
 
   render() {
-    console.log(this.props.posts)
     return (
       <div>
         <ThisLineChart

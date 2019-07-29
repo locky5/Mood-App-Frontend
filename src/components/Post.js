@@ -70,6 +70,14 @@ class Post extends React.Component {
       })
   }
 
+  shortenDescription = () => {
+    if (this.props.description.length > 10) {
+      return this.props.description.slice(0, 10)
+    } else {
+      return this.props.description
+    }
+  }
+
   render() {
     return (
       <div className="post" onClick={this.props.clickPost}>
@@ -82,7 +90,7 @@ class Post extends React.Component {
                 onClick={() => this.props.setStuff(this.props.id, this.props.comments)}
               >
                 <p>{`${this.props.user.name}:`}</p>
-                <p>"{this.props.description}"</p>
+                <p>{this.shortenDescription()}</p>
                 <p>Mood: {this.getMoodName()}
                 </p>
                 <button onClick={this.updateLikes}>{this.state.likes} likes!</button>

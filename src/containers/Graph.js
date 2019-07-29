@@ -5,7 +5,6 @@ import ThisPieChart from '../components/ThisPieChart'
 export default class Graph extends React.Component {
 
   render() {
-    console.log(this.props.currentUser.posts)
     return (
       <div>
         <br></br>
@@ -13,7 +12,8 @@ export default class Graph extends React.Component {
         <br></br>
 
         <h1>Here's Some Of Your Popular Posts: </h1>
-        {this.props.currentUser.posts.map(post =>
+        {this.props.currentUser.posts.sort((a, b) =>
+        (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
           <div className="post">
             <div className="post-it">
               {post.description}
@@ -26,11 +26,11 @@ export default class Graph extends React.Component {
         <br></br>
         <h2>Here's Some Analytics Of Your Moods:</h2>
         <ThisLineChart
-          posts={this.props.posts}
+          posts={this.props.currentUser.posts}
           moods={this.props.moods}
         />
         <ThisPieChart
-          posts={this.props.posts}
+          posts={this.props.currentUser.posts}
           moods={this.props.moods}
         />
       </div>

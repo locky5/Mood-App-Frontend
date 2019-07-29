@@ -41,7 +41,7 @@ class ProfileContainer extends React.Component {
         <br></br>
 
         Submit A New Post!
-        <select onChange={this.props.handleFormChange}>
+        <select name="form" onChange={this.props.handleFormChange}>
           {this.createMoods()}
         </select>
 
@@ -57,7 +57,7 @@ class ProfileContainer extends React.Component {
         <br></br>
 
         Search Posts By Mood
-        <select onChange={this.props.handleFormChange}>
+        <select onChange={this.props.findPostsByMood}>
           {this.createMoods()}
         </select>
 

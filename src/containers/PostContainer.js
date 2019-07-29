@@ -43,7 +43,7 @@ class PostContainer extends React.Component {
         likes={post.likes}
         clickPost={this.props.clickPost}
         moodId={post.mood.id}
-        comments={this.state.data.filter(comment => comment.post_id === post.id)}
+        comments={this.state.data.filter(comment => comment.post.id === post.id)}
       />
     )
   }

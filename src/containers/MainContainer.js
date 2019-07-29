@@ -36,6 +36,7 @@ class MainContainer extends React.Component {
   }
 
   handleFormChange = (event) => {
+    console.log(event.target.name)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -66,7 +67,7 @@ class MainContainer extends React.Component {
   }
 
   findPostsByMood = (event) => {
-    let myFilteredPosts = this.state.posts.filter(post => post.mood_id === parseInt(event.target.value))
+    let myFilteredPosts = this.state.posts.filter(post => post.mood.id === parseInt(event.target.value))
     console.log(myFilteredPosts)
     this.setState({
       filteredPosts: myFilteredPosts

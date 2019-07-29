@@ -26,6 +26,7 @@ class Post extends React.Component {
   }
 
   getMoodName = () => {
+    console.log(this.props.moodId)
     return this.state.data.filter(mood => mood.id === this.props.moodId)[0].name
   }
 
@@ -107,7 +108,6 @@ class Post extends React.Component {
   }
 
   render() {
-    console.log(this.props.moodId)
     return (
       <div className="post" onClick={this.props.clickPost}>
         {

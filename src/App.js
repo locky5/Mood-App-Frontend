@@ -12,11 +12,41 @@ import { Route, Switch, Link } from "react-router-dom"
 
 class App extends React.Component {
 
+
+
+  // constructor(props) {
+  //   super(props)
+  //
+  //   const sock = new SockJS('https://chat-server.azurewebsites.net/chat')
+  //
+  //   sock.onopen = () => {
+  //     console.log('connection open')
+  //   }
+  //
+  //   sock.onmessage = (e) => {
+  //     console.log('message received: ', e.data)
+  //   }
+  //
+  //   sock.onclose = () => {
+  //     console.log('closed')
+  //   }
+  //
+  //   this.state = {
+  //     actions: sock,
+  //     messages: [],
+  //     currentUser: null,
+  //     posts: null,
+  //     moods: null
+  //   }
+  // }
+
   state = {
     currentUser: null,
     posts: null,
     moods: null
   }
+
+
 
   setUser = (user) => {
     this.setState({
@@ -47,6 +77,7 @@ class App extends React.Component {
 
 
   render() {
+    console.log(this.state.posts)
     return (
       <div className="App">
           <NavBar currentUser={this.state.currentUser} />
@@ -54,38 +85,16 @@ class App extends React.Component {
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
             <Route path="/posts" render={() => <MainContainer username={this.state.username} />} />
-            <Route path="/profile" render={() => <Graph posts={this.state.posts} moods={this.state.moods} currentUser={this.state.currentUser} />} />
+            {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
+                <Graph
+                  posts={this.state.posts} moods={this.state.moods} currentUser={this.state.currentUser}
+                />
+            } /> : null }
           </Switch>
-        {/*<Chat {...this.state} />*/}
-        {/* <div>
-          {this.state.posts && this.state.moods ? <Graph posts={this.state.posts} moods={this.state.moods}/> : null}
-        </div> */}
+        // <Chat {...this.state} />
       </div>
     )
   }
 }
 
 export default App
-
-// constructor(props) {
-//   super(props)
-//
-//   const sock = new SockJS('https://chat-server.azurewebsites.net/chat')
-//
-//   sock.onopen = () => {
-//     console.log('connection open')
-//   }
-//
-//   sock.onmessage = (e) => {
-//     console.log('message received: ', e.data)
-//   }
-//
-//   sock.onclose = () => {
-//     console.log('closed')
-//   }
-//
-//   this.state = {
-//     actions: sock,
-//     messages: []
-//   }
-// }

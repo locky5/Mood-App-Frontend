@@ -27,6 +27,7 @@ class PostContainer extends React.Component {
         <Post
           key={post.id}
           id={post.id}
+          user={post.user}
           description={post.description}
           likes={post.likes}
           clickPost={this.props.clickPost}
@@ -41,6 +42,7 @@ class PostContainer extends React.Component {
       <Post
         key={post.id}
         id={post.id}
+        user={post.user}
         description={post.description}
         likes={post.likes}
         clickPost={this.props.clickPost}

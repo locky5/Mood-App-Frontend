@@ -71,7 +71,6 @@ class Post extends React.Component {
   }
 
   render() {
-    console.log("Props", this.props.currentUser)
     return (
       <div className="post" onClick={this.props.clickPost}>
         {
@@ -82,7 +81,7 @@ class Post extends React.Component {
                 style={{background: this.determineColor()}}
                 onClick={() => this.props.setStuff(this.props.id, this.props.comments)}
               >
-                <p>{this.props.currentUser ? `${this.props.currentUser.name}:` : null}</p>
+                <p>{`${this.props.user.name}:`}</p>
                 <p>"{this.props.description}"</p>
                 <p>Mood: {this.getMoodName()}
                 </p>

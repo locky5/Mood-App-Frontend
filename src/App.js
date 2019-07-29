@@ -124,7 +124,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
-          {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments} />}  /> : null}
+          {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments} currentUser={this.state.currentUser} />}  /> : null}
           <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} currentUser={this.state.currentUser}/>} />
             {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
                 <Graph

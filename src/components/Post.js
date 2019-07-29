@@ -5,7 +5,10 @@ class Post extends React.Component {
   state = {
     data: null,
     color: '#ffc',
-    likes: this.props.likes
+    likes: this.props.likes,
+    makeComment: false,
+    commentValue: null,
+    comments: this.props.comments
   }
 
   componentDidMount() {
@@ -51,7 +54,6 @@ class Post extends React.Component {
   }
 
   updateLikes = () => {
-
     fetch(`http://localhost:3000/api/v1/posts/${this.props.id}`, {
       method: 'PATCH',
       headers: {
@@ -68,10 +70,44 @@ class Post extends React.Component {
           likes: res.likes
         })
       })
+  }
 
+  postComment = () => {
+    this.setState({
+      makeComment: !this.state.makeComment
+    })
+  }
+
+  commentValue = (event) => {
+    this.setState({
+      commentValue: event.target.value
+    })
+  }
+
+  handleCommentSubmit = (event) => {
+    event.preventDefault()
+
+    fetch('http://localhost:3000/api/v1/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        description: this.state.commentValue,
+        post_id: this.props.id
+      })
+    })
+      .then(res => res.json())
+      .then(comment =>
+        this.setState({
+          comments: [...this.state.comments, comment]
+        })
+      )
   }
 
   render() {
+    console.log(this.props.comments)
     return (
       <div className="post" onClick={this.props.clickPost}>
         {
@@ -83,7 +119,7 @@ class Post extends React.Component {
                 <p>Text Content #1</p>
               </a>
             </li> */}
-            
+
               <a href="#" style={{background: this.determineColor()}}>
                 <p>{this.props.description}</p>
                 <p>Mood:
@@ -92,9 +128,28 @@ class Post extends React.Component {
                   }
                 </p>
                 <button onClick={this.updateLikes}>Like!</button>
+                <button onClick={this.postComment}>Make A Comment</button>
                 <p>{this.state.likes}</p>
+                {
+                  this.state.makeComment ?
+                  <div>
+                    <form onSubmit={this.handleCommentSubmit}>
+                      <textarea onChange={this.commentValue}></textarea>
+                      <button>Submit Comment</button>
+                    </form>
+                  </div>
+                  :
+                  null
+                }
+                {
+                  this.state.comments ?
+
+                  this.state.comments.map(comment => <p>{comment.description}</p>)
+                  :
+                  null
+                }
               </a>
-            
+
           </div>
            :
           null

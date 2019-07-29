@@ -3,6 +3,20 @@ import Post from '../components/Post'
 
 class PostContainer extends React.Component {
 
+  state = {
+    data: null
+  }
+
+  getComments = () => {
+    fetch('http://localhost:3000/api/v1/comments')
+      .then(res => res.json())
+      .then(comments =>
+        this.setState({
+          data: comments
+        })
+      )
+  }
+
   renderPosts = () => {
     return this.props.posts.map(post =>
       <Post
@@ -10,7 +24,9 @@ class PostContainer extends React.Component {
         id={post.id}
         description={post.description}
         likes={post.likes}
-        clickPost={this.props.clickPost} moodId={post.mood_id}
+        clickPost={this.props.clickPost}
+        moodId={post.mood_id}
+        comments={this.state.data.filter(comment => comment.post_id === post.id)}
       />
     )
   }
@@ -19,7 +35,8 @@ class PostContainer extends React.Component {
 
     return (
       <div className="post-container">
-        {this.renderPosts()}
+        {this.state.data ? null : this.getComments()}
+        {this.state.data ? this.renderPosts() : null}
       </div>
     )
   }

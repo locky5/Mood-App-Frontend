@@ -7,7 +7,7 @@ import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import Chat from './components/Chat'
 import SockJS from 'sockjs-client'
-import Graph from './components/Graph'
+import Graph from './containers/Graph'
 import { Route, Switch, Link } from "react-router-dom"
 
 class App extends React.Component {
@@ -45,7 +45,7 @@ class App extends React.Component {
       )
   }
 
-  
+
 
   render() {
     console.log(this.state)

@@ -29,6 +29,12 @@ class App extends React.Component {
     this.renderData()
   }
 
+  logout = () => {
+    this.setState({
+      currentUser: null
+    })
+  }
+
   renderData = () => {
     fetch('http://localhost:3000/api/v1/posts')
       .then(res => res.json())
@@ -50,7 +56,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-          <NavBar currentUser={this.state.currentUser} />
+          <NavBar currentUser={this.state.currentUser} logout={this.logout} />
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />

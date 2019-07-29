@@ -12,8 +12,7 @@ class NavBar extends React.Component {
       <Link to="/profile">Profile</Link>
       <Link to="/login">Log In</Link>
       <Link to="/signup">Signup</Link>
-      <Link to="#">{this.props.currentUser ? `Logout ${this.props.currentUser.name}` : null}</Link>
-     
+      <button onClick={this.props.logout}>{this.props.currentUser ? `Logout ${this.props.currentUser.name}` : null}</button>onClick={this.props.logout}
     </div>
     )
   }

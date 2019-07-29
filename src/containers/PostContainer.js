@@ -27,12 +27,14 @@ class PostContainer extends React.Component {
         <Post
           key={post.id}
           id={post.id}
+          user={post.user}
           description={post.description}
           likes={post.likes}
           clickPost={this.props.clickPost}
           moodId={post.mood.id}
           comments={this.state.data.filter(comment => comment.post.id === parseInt(post.id))}
           setStuff={this.props.setStuff}
+          currentUser={this.props.currentUser}
         />
       )
     }
@@ -40,12 +42,14 @@ class PostContainer extends React.Component {
       <Post
         key={post.id}
         id={post.id}
+        user={post.user}
         description={post.description}
         likes={post.likes}
         clickPost={this.props.clickPost}
         moodId={post.mood.id}
         comments={this.state.data.filter(comment => comment.post.id === post.id)}
         setStuff={this.props.setStuff}
+        currentUser={this.props.currentUser}
       />
     )
   }

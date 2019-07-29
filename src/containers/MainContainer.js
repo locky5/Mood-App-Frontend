@@ -110,6 +110,7 @@ class MainContainer extends React.Component {
             findText={this.findText}
             orderByLikes={this.orderByLikes}
             orderAlphabetically={this.orderAlphabetically}
+            currentUser={this.props.currentUser}
           />
           {
             this.state.posts ?
@@ -118,6 +119,7 @@ class MainContainer extends React.Component {
               clickPost={this.clickPost}
               filteredPosts={this.state.filteredPosts}
               setStuff={this.props.setStuff}
+              currentUser={this.props.currentUser}
             />
             :
             <LoadingPage/>

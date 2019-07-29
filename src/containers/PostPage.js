@@ -49,7 +49,7 @@ class PostPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="post-page">
         <br></br>
         <br></br>
         <br></br>

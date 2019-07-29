@@ -117,14 +117,20 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("App", this.state.currentUser)
     return (
       <div className="App">
           <NavBar currentUser={this.state.currentUser} logout={this.logout} />
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
+<<<<<<< HEAD
             {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments}/>} /> : null}
             <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} currentUser={this.state.currentUser} />} />
+=======
+          {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments} currentUser={this.state.currentUser} />}  /> : null}
+          <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} currentUser={this.state.currentUser}/>} />
+>>>>>>> aaron
             {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
                 <Graph
                   posts={this.state.posts} moods={this.state.moods} currentUser={this.state.currentUser}

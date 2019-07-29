@@ -44,9 +44,17 @@ class App extends React.Component {
   state = {
     currentUser: null,
     posts: null,
-    moods: null
+    moods: null,
+    id: null,
+    comments: []
   }
 
+  setStuff = (thisId, thisComments) => {
+    this.setState({
+      id: thisId,
+      comments: thisComments
+    })
+  }
 
 
   setUser = (user) => {
@@ -108,17 +116,15 @@ class App extends React.Component {
       )
   }
 
-
   render() {
-    console.log(this.state.posts)
     return (
       <div className="App">
           <NavBar currentUser={this.state.currentUser} logout={this.logout} />
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
-            <Route path="/postpage" render={() => <PostPage />} />
-            <Route path="/posts" render={() => <MainContainer username={this.state.username} />} />
+            {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments}/>} /> : null}
+            <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} />} />
             {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
                 <Graph
                   posts={this.state.posts} moods={this.state.moods} currentUser={this.state.currentUser}

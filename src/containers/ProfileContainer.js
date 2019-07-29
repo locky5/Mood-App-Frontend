@@ -41,23 +41,25 @@ class ProfileContainer extends React.Component {
         <br></br>
 
         Submit A New Post!
-        <select name="form" onChange={this.props.handleFormChange}>
+        <select class="select-css" name="form" onChange={this.props.handleFormChange}>
           {this.createMoods()}
         </select>
 
-        <textarea
+        <input
           name="description" onChange={this.props.handleChange}>
-        </textarea>
+        </input>
 
         <button
-          type="submit" onClick={this.props.handleSubmit}>Submit
+          type="submit"
+          onClick={this.props.handleSubmit}
+        >Submit
         </button>
 
         <br></br>
         <br></br>
 
         Search Posts By Mood
-        <select onChange={this.props.findPostsByMood}>
+        <select class="select-css" onChange={this.props.findPostsByMood}>
           {this.createMoods()}
         </select>
 
@@ -65,16 +67,16 @@ class ProfileContainer extends React.Component {
         <br></br>
 
         Search Posts By Description
-        <textarea
+        <input
           onChange={this.props.findText}>
-        </textarea>
+        </input>
 
         <br></br>
         <br></br>
 
         Order By Likes
         <button
-          type="submit" onClick={this.props.orderByLikes}>:D
+          type="submit" onClick={this.props.orderByLikes}>Go
         </button>
 
         <br></br>
@@ -82,7 +84,7 @@ class ProfileContainer extends React.Component {
 
         Order Alphabetically
         <button
-          type="submit" onClick={this.props.orderAlphabetically}>:D
+          type="submit" onClick={this.props.orderAlphabetically}>Go
         </button>
 
       </div>

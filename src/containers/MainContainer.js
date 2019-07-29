@@ -45,25 +45,29 @@ class MainContainer extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    fetch('http://localhost:3000/api/v1/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        description: this.state.description,
-        likes: 0,
-        user_id: 1,
-        mood_id: this.state.form
-      })
-    })
-      .then(res => res.json())
-      .then(post =>
-        this.setState({
-          posts: [...this.state.posts, post]
+    if (this.state.description) {
+      fetch('http://localhost:3000/api/v1/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          description: this.state.description,
+          likes: 0,
+          user_id: 1,
+          mood_id: this.state.form
         })
-      )
+      })
+        .then(res => res.json())
+        .then(post =>
+          this.setState({
+            posts: [...this.state.posts, post]
+          })
+        )
+    } else if (!this.state.description) {
+      alert('You Need A Description!')
+    }
   }
 
   findPostsByMood = (event) => {
@@ -91,7 +95,7 @@ class MainContainer extends React.Component {
 
   orderAlphabetically = () => {
     let myFilteredPosts = this.state.posts.sort((a, b) =>
-    (a.description.toLowerCase() > b.description.toLowerCase()) ? 1: -1)
+    (a.description > b.description) ? 1: -1)
     this.setState({
       filteredPosts: myFilteredPosts
     })
@@ -113,6 +117,7 @@ class MainContainer extends React.Component {
               posts={this.state.posts}
               clickPost={this.clickPost}
               filteredPosts={this.state.filteredPosts}
+              setStuff={this.props.setStuff}
             />
             :
             <LoadingPage/>

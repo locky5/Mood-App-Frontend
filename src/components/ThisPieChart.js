@@ -16,7 +16,6 @@ export default class ThisPieChart extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         {this.state ? null : this.createPieGraph()}

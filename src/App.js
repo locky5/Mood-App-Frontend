@@ -91,7 +91,7 @@ class App extends React.Component {
                 />
             } /> : null }
           </Switch>
-        // <Chat {...this.state} />
+        {/* <Chat {...this.state} /> */}
       </div>
     )
   }

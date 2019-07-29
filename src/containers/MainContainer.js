@@ -55,7 +55,7 @@ class MainContainer extends React.Component {
         body: JSON.stringify({
           description: this.state.description,
           likes: 0,
-          user_id: 1,
+          user_id: this.props.currentUser.id,
           mood_id: this.state.form
         })
       })

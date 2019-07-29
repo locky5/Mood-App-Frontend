@@ -93,9 +93,9 @@ class App extends React.Component {
   logout = () => {
     this.setState({
       currentUser: null
-    }, () => { 
+    }, () => {
       localStorage.removeItem("user_id")
-      this.props.history.push("/login") 
+      this.props.history.push("/login")
     })
   }
 
@@ -124,7 +124,7 @@ class App extends React.Component {
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
             {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments}/>} /> : null}
-            <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} />} />
+            <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} currentUser={this.state.currentUser} />} />
             {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
                 <Graph
                   posts={this.state.posts} moods={this.state.moods} currentUser={this.state.currentUser}

@@ -15,6 +15,7 @@ export default class ThisLineChart extends React.Component {
   }
 
   render() {
+    console.log(this.props.posts)
     return (
       <div>
         {this.state ? null : this.createLineGraph()}

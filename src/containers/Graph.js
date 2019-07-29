@@ -26,11 +26,11 @@ export default class Graph extends React.Component {
         <br></br>
         <h2>Here's Some Analytics Of Your Moods:</h2>
         <ThisLineChart
-          posts={this.props.posts}
+          posts={this.props.currentUser.posts}
           moods={this.props.moods}
         />
         <ThisPieChart
-          posts={this.props.posts}
+          posts={this.props.currentUser.posts}
           moods={this.props.moods}
         />
       </div>

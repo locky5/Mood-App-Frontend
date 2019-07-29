@@ -9,6 +9,7 @@ import Chat from './components/Chat'
 import SockJS from 'sockjs-client'
 import Graph from './containers/Graph'
 import { Route, Switch, Link } from "react-router-dom"
+import PostPage from './containers/PostPage'
 
 class App extends React.Component {
 
@@ -84,6 +85,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
+            <Route path="/postpage" render={() => <PostPage />} />
             <Route path="/posts" render={() => <MainContainer username={this.state.username} />} />
             {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
                 <Graph
@@ -91,7 +93,13 @@ class App extends React.Component {
                 />
             } /> : null }
           </Switch>
+<<<<<<< HEAD
         // <Chat {...this.state} />
+=======
+        {/* <div>
+          {this.state.posts && this.state.moods ? <Graph posts={this.state.posts} moods={this.state.moods}/> : null}
+        </div> */}
+>>>>>>> aaron
       </div>
     )
   }

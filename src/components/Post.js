@@ -107,7 +107,6 @@ class Post extends React.Component {
   }
 
   render() {
-    console.log(this.props.comments)
     return (
       <div className="post" onClick={this.props.clickPost}>
         {

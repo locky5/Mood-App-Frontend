@@ -11,7 +11,9 @@
     "react-linechart": "^1.1.12",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "sockjs": "^0.3.19"
+    "react-styled-select": "^2.1.3",
+    "sockjs": "^0.3.19",
+    "styled-components": "^4.3.2"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

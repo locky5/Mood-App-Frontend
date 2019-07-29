@@ -7,6 +7,10 @@ class PostContainer extends React.Component {
     data: null
   }
 
+  componentDidMount() {
+    this.getComments()
+  }
+
   getComments = () => {
     fetch('http://localhost:3000/api/v1/comments')
       .then(res => res.json())
@@ -18,6 +22,19 @@ class PostContainer extends React.Component {
   }
 
   renderPosts = () => {
+    if (this.props.filteredPosts) {
+      return this.props.filteredPosts.map(post =>
+        <Post
+          key={post.id}
+          id={post.id}
+          description={post.description}
+          likes={post.likes}
+          clickPost={this.props.clickPost}
+          moodId={post.mood_id}
+          comments={this.state.data.filter(comment => comment.post_id === post.id)}
+        />
+      )
+    }
     return this.props.posts.map(post =>
       <Post
         key={post.id}
@@ -32,10 +49,8 @@ class PostContainer extends React.Component {
   }
 
   render() {
-
     return (
       <div className="post-container">
-        {this.state.data ? null : this.getComments()}
         {this.state.data ? this.renderPosts() : null}
       </div>
     )

@@ -7,7 +7,8 @@ class MainContainer extends React.Component {
 
   state = {
     posts: null,
-    form: 1
+    form: 1,
+    filteredPosts: null
   }
 
   componentDidMount() {
@@ -64,16 +65,53 @@ class MainContainer extends React.Component {
       )
   }
 
+  findPostsByMood = (event) => {
+    let myFilteredPosts = this.state.posts.filter(post => post.mood_id === parseInt(event.target.value))
+    console.log(myFilteredPosts)
+    this.setState({
+      filteredPosts: myFilteredPosts
+    })
+  }
+
+  findText = (event) => {
+    let myFilteredPosts = this.state.posts.filter(post => post.description.includes(event.target.value))
+    this.setState({
+      filteredPosts: myFilteredPosts
+    })
+  }
+
+  orderByLikes = () => {
+    let myFilteredPosts = this.state.posts.sort((a, b) =>
+    (a.likes > b.likes) ? 1: -1)
+    this.setState({
+      filteredPosts: myFilteredPosts
+    })
+  }
+
+  orderAlphabetically = () => {
+    let myFilteredPosts = this.state.posts.sort((a, b) =>
+    (a.description.toLowerCase() > b.description.toLowerCase()) ? 1: -1)
+    this.setState({
+      filteredPosts: myFilteredPosts
+    })
+  }
+
   render() {
     return (
       <div className="main">
           <ProfileContainer
             handleChange={this.handleChange} handleFormChange={this.handleFormChange} handleSubmit={this.handleSubmit}
+            findPostsByMood={this.findPostsByMood}
+            findText={this.findText}
+            orderByLikes={this.orderByLikes}
+            orderAlphabetically={this.orderAlphabetically}
           />
           {
             this.state.posts ?
             <PostContainer
-              posts={this.state.posts} clickPost={this.clickPost}
+              posts={this.state.posts}
+              clickPost={this.clickPost}
+              filteredPosts={this.state.filteredPosts}
             />
             :
             <LoadingPage/>

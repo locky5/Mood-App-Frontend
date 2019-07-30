@@ -46,13 +46,17 @@ class App extends React.Component {
     posts: null,
     moods: null,
     id: null,
-    comments: []
+    comments: [],
+    clickedPost: null,
+    moodData: null
   }
 
-  setStuff = (thisId, thisComments) => {
+  setStuff = (thisId, thisComments, thisData, clickedPost) => {
     this.setState({
       id: thisId,
-      comments: thisComments
+      comments: thisComments,
+      moodData: thisData,
+      clickedPost: clickedPost
     })
   }
 
@@ -117,18 +121,18 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("App", this.state.currentUser)
+    const {id, username, comments, currentUser, clickedPost, posts, moods, moodData} = this.state
     return (
       <div className="App">
-          <NavBar currentUser={this.state.currentUser} logout={this.logout} />
+          <NavBar currentUser={currentUser} logout={this.logout} />
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
-          {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments} currentUser={this.state.currentUser} />}  /> : null}
-          <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} currentUser={this.state.currentUser}/>} />
-            {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
+          {id && comments ? <Route path="/postpage" render={() => <PostPage id={id} comments={comments} currentUser={currentUser} clickedPost={clickedPost} moodData={this.state.moodData} />}  /> : null}
+          <Route path="/posts" render={() => <MainContainer username={username} setStuff={this.setStuff} currentUser={currentUser}/>} />
+            {posts && moods ? <Route path="/profile" render={() =>
                 <Graph
-                  posts={this.state.posts} moods={this.state.moods} currentUser={this.state.currentUser}
+                  posts={posts} moods={moods} currentUser={currentUser}
                 />
             } /> : null }
           </Switch>

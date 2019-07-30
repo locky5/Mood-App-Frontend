@@ -20,7 +20,7 @@
 }
 
 .profile-container {
-  border: solid 1px;
+  /* border: solid 1px; */
   width: 20%;
   height: 750px;
 }
@@ -278,4 +278,14 @@ button {
   &:hover {
     background-color: lighten(#3fc1c9, 15%);
   }
+}
+
+
+/* POST PAGE STYLING */
+
+.post-page {
+  margin-top: 20px;
+  border: solid 1px;
+  height: 100%;
+  display: flex;
 }

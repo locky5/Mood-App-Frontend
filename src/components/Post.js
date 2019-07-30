@@ -89,7 +89,7 @@ class Post extends React.Component {
 
               <Link to='/postpage'
                 style={{background: this.determineColor()}}
-                onClick={() => this.props.setStuff(this.props.id, this.props.comments)}
+                onClick={() => this.props.setStuff(this.props.id, this.props.comments, this.state.data, this)}
               >
                 <p>{`${this.props.user.name}:`}</p>
                 <p>{this.shortenDescription()}</p>

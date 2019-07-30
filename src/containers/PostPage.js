@@ -6,7 +6,35 @@ class PostPage extends React.Component {
   state = {
     makeComment: false,
     commentValue: null,
-    comments: this.props.comments
+    comments: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/api/v1/comments')
+    .then(resp => resp.json())
+    .then(response => {
+      let postComments = response.filter(comment => {
+        return comment.post.id === this.props.clickedPost.props.id
+      })
+      this.setState({
+        comments: postComments
+      })
+      }    
+    )
+  }
+
+  componentDidUpdate() {
+    fetch('http://localhost:3000/api/v1/comments')
+      .then(resp => resp.json())
+      .then(response => {
+        let postComments = response.filter(comment => {
+          return comment.post.id === this.props.clickedPost.props.id
+        })
+        this.setState({
+          comments: postComments
+        })
+      }
+      )
   }
 
   commentValue = (event) => {
@@ -27,15 +55,10 @@ class PostPage extends React.Component {
         },
         body: JSON.stringify({
           description: this.state.commentValue,
-          post_id: this.props.id
+          post_id: this.props.id,
+          user_id: this.props.currentUser.id
         })
       })
-        .then(res => res.json())
-        .then(comment =>
-          this.setState({
-            comments: [...this.state.comments, comment]
-          })
-        )
     } else if (!this.state.commentValue) {
       alert('You need a message!')
     }
@@ -74,7 +97,7 @@ class PostPage extends React.Component {
   }
 
   render() {
-
+    
     return (
       <div className="post-page">
         <div className="comment-post-container">
@@ -96,7 +119,7 @@ class PostPage extends React.Component {
           <h1>Comments: </h1>
           {
             this.state.comments ?
-            this.state.comments.map(comment => <div>{comment.description}</div>)
+            this.state.comments.map(comment => <div>{`${comment.user.name}: ${comment.description}`}</div>)
             :
             null
           }

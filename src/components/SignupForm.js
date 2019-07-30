@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
       <div id="signup">
         <form onSubmit={this.handleSubmit}>
           Username: <input name="username" value={this.state.username} onChange={this.handleChange} />
-          Password: <input name="password" value={this.state.password} onChange={this.handleChange} />
+          Password: <input name="password" type="password" value={this.state.password} onChange={this.handleChange} />
           <input type="submit" value="Submit"></input>
         </form>
       </div>

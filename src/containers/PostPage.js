@@ -116,13 +116,17 @@ class PostPage extends React.Component {
           </div>
         </div>
         <div className="comments-container">
-          <h1>Comments: </h1>
-          {
-            this.state.comments ?
-            this.state.comments.map(comment => <div>{`${comment.user.name}: ${comment.description}`}</div>)
-            :
-            null
-          }
+          <div>
+            <h1>Comments: </h1>
+          </div>
+            <div className="comments-list">
+            {
+              this.state.comments ?
+              this.state.comments.map(comment => <div className="comment" >{`${comment.user.name}: ${comment.description}`}</div>)
+              :
+              null
+            }
+            </div>
         </div>
         <div className="comment-form">
           <button onClick={this.postComment}>Make a Comment!</button>

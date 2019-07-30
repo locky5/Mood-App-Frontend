@@ -19,7 +19,7 @@
   overflow: scroll;
 }
 
-.profile-container {
+.home-profile-container {
   /* border: solid 1px; */
   width: 20%;
   height: 750px;
@@ -403,4 +403,46 @@ svg {
     stroke-dashoffset: 35%;
     stroke-dasharray: 0 87.5%;
   }
+}
+
+
+/* PROFILE PAGE */
+
+.profile-container {
+  border: solid 1px #e8e2e2;
+  width: 100%;
+  display: flex;
+}
+
+.profile-container div {
+  width: 100%;
+}
+
+.profile-header {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.profile-header h4 {
+  margin-top: 40px;
+}
+
+.pie-chart {
+  margin-top: 40px;
+}
+
+.pie-chart-text {
+  margin-top: 30px;
+}
+
+.user-posts {
+  display: flex;
+  width: 100%;
+}
+
+.chart-container {
+  text-align: center;
+  margin-top: 30px;
+  padding-left: 10px;
+  padding-right: 20px;
 }

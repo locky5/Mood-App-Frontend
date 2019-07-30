@@ -5,7 +5,6 @@ import NavBar from './containers/NavBar'
 import MainContainer from './containers/MainContainer'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
-import Chat from './components/Chat'
 import SockJS from 'sockjs-client'
 import Graph from './containers/Graph'
 import { Route, Switch, Link } from "react-router-dom"
@@ -222,7 +221,6 @@ class App extends React.Component {
               null
             }
           </Switch>
-        {/* <Chat {...this.state} /> */}
       </div>
     )
   }

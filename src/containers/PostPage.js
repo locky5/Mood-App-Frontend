@@ -128,19 +128,23 @@ class PostPage extends React.Component {
             }
             </div>
         </div>
-        <div className="comment-form">
-          <button onClick={this.postComment}>Make a Comment!</button>
-          {
-            this.state.makeComment ?
-            <div className="comment-form">
-              <form onSubmit={this.handleCommentSubmit}>
-                <textarea className="comment-text" onChange={this.commentValue}></textarea>
-                <button>Submit Comment</button>
-              </form>
-            </div>
-            :
-            null
-          }
+        <div className="comment-form-container">
+          <div className="comment-button">
+            <button onClick={this.postComment}>Make a Comment!</button>
+          </div>
+          <div className="form">
+            {
+              this.state.makeComment ?
+              <div className="comment-form">
+                <form onSubmit={this.handleCommentSubmit}>
+                  <textarea className="comment-text" onChange={this.commentValue}></textarea>
+                  <button>Submit Comment</button>
+                </form>
+              </div>
+              :
+              null
+            }
+          </div>
         </div>
       </div>
     )

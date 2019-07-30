@@ -95,8 +95,8 @@ class Post extends React.Component {
                 <p>{this.shortenDescription()}</p>
                 <p>Mood: {this.getMoodName()}
                 </p>
-                <button onClick={this.updateLikes}>{this.state.likes} likes!</button>
               </Link>
+                <button onClick={this.updateLikes}>{(this.state.likes > 1 || this.state.likes === 0) ? `${this.state.likes} likes` : `${this.state.likes} like`}!</button>
 
           </div>
            :

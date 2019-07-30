@@ -50,7 +50,34 @@ class LoginForm extends React.Component {
             <input type="submit" value="Submit"></input>
           </form>
         </div>
-        <img id="gif" src="https://i.imgur.com/7cCWmGI.gif"/>
+        {/* <img id="gif" src="https://i.imgur.com/7cCWmGI.gif"/> */}
+        <div>
+          <svg width="100%"
+              height="100%"
+              style={{background: "#082330"}}>
+            <symbol id="s-text">
+              <text text-anchor="middle"
+                    x="50%"
+                    y="35%"
+                    className="text--line"
+              >
+                Moody
+              </text>
+            </symbol>
+            <g className="g-ants">
+              <use xlinkHref="#s-text"
+                className="text-copy"></use>
+              <use xlinkHref="#s-text"
+                className="text-copy"></use>
+              <use xlinkHref="#s-text"
+                className="text-copy"></use>
+              <use xlinkHref="#s-text"
+                className="text-copy"></use>
+              <use xlinkHref="#s-text"
+                className="text-copy"></use>
+            </g>
+          </svg>
+        </div>
       </div>
     )
   }

@@ -8,6 +8,7 @@
     "react": "^16.8.6",
     "react-chartkick": "^0.3.2",
     "react-dom": "^16.8.6",
+    "react-fade-in": "^0.1.6",
     "react-linechart": "^1.1.12",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",

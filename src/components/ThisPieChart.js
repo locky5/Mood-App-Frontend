@@ -1,5 +1,6 @@
 import React from 'react'
 import { PieChart } from 'react-chartkick'
+import FadeIn from 'react-fade-in'
 import 'chart.js'
 
 export default class ThisPieChart extends React.Component {
@@ -76,6 +77,7 @@ export default class ThisPieChart extends React.Component {
         />
         {
           this.state ?
+        <FadeIn>
           <h3>
             It looks like you're feeling {this.getCommonMood()} a lot...
             <br></br>
@@ -86,6 +88,7 @@ export default class ThisPieChart extends React.Component {
               {this.advice()}
             </p>
           </h3>
+        </FadeIn>
           :
           null
         }

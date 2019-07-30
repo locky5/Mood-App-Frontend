@@ -14,6 +14,11 @@ export default class ThisLineChart extends React.Component {
     }
   }
 
+  getDate = () => {
+    let today = new Date().toLocaleDateString()
+    return today
+  }
+
   render() {
     return (
       <div>
@@ -23,6 +28,7 @@ export default class ThisLineChart extends React.Component {
           xtitle="Time"
           ytitle="Mood"
           download={true}
+          title={this.getDate()}
         />
       </div>
     )

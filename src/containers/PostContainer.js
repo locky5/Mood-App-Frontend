@@ -35,6 +35,7 @@ class PostContainer extends React.Component {
           comments={this.state.data.filter(comment => comment.post.id === parseInt(post.id))}
           setStuff={this.props.setStuff}
           currentUser={this.props.currentUser}
+          updateLikes={this.props.updateLikes}
         />
       )
     }

@@ -1,12 +1,14 @@
 import React from 'react'
 import ThisLineChart from '../components/ThisLineChart'
 import ThisPieChart from '../components/ThisPieChart'
+import FadeIn from 'react-fade-in'
 import {Link} from 'react-router-dom'
 
 export default class Graph extends React.Component {
 
   state = {
-    currentUserPosts: null
+    currentUserPosts: null,
+    data: null
   }
 
   componentDidMount() {
@@ -18,6 +20,17 @@ export default class Graph extends React.Component {
         currentUserPosts: filteredPosts
       })
     }
+    this.renderMoods()
+  }
+
+  renderMoods = () => {
+    fetch('http://localhost:3000/api/v1/moods')
+      .then(res => res.json())
+      .then(moods =>
+        this.setState({
+          data: moods
+        })
+      )
   }
 
   determineColor = (moodId) => {
@@ -54,15 +67,17 @@ export default class Graph extends React.Component {
           this.props.currentUser && this.state.currentUserPosts ?
           <div>
             <br></br>
-            <h1>Hi, {this.props.currentUser.name}</h1>
-            <br></br>
+            <FadeIn>
+              <h1>Hi, {this.props.currentUser.name} </h1>
 
-            <h1>Here's Some Of Your Popular Posts: </h1>
-            { this.state.currentUserPosts.length > 0 ?
+              <br></br>
+
+              <h1>Here's Some Of Your Popular Posts: </h1>
+            </FadeIn>
+            { this.state.currentUserPosts.length > 0 && this.state.data ?
 
             this.state.currentUserPosts.sort((a, b) =>
             (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
-              <div className="comment-post">
                 <div className="post" >
                   <div className="post-it">
                     <a href='#'
@@ -73,11 +88,10 @@ export default class Graph extends React.Component {
                     </a>
                   </div>
                 </div>
-              </div>
             )
             :
             <div>
-              <p>Start Posting!</p>
+              <p>None Yet... Start Posting!</p>
               <Link to='/posts'>Posts
               </Link>
             </div>

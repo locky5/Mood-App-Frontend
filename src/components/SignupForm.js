@@ -43,9 +43,6 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div id="signup">
-        <br></br>
-        <br></br>
-        <br></br>
         <form onSubmit={this.handleSubmit}>
           Username: <input name="username" value={this.state.username} onChange={this.handleChange} />
           Password: <input name="password" value={this.state.password} onChange={this.handleChange} />

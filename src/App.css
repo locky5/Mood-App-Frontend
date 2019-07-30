@@ -28,7 +28,7 @@
 .post {
   width: 24%;
   height: 200px;
-  border: solid 1px;
+  /* border: solid 1px; */
   margin-left: 2px;
   margin-right: 2px;
   margin-top: 2px;
@@ -39,7 +39,7 @@
 /* The navigation bar */
 .navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: #165a84;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
@@ -163,10 +163,12 @@ body{
   height: 100%;
   padding-left: 35px;
   padding-right: 35px;
+  padding-top: 40px;
+  padding-bottom: 15px;
   font-size: 10px;
   font-weight: bold;
   border-radius: 5px;
-  background-color: rgba(51,121,204);
+  background-color: #49b1bd;
   color: white;
   border-color: rgba(51,121,204);
 }
@@ -176,11 +178,14 @@ body{
   height: 100%;
   padding-left: 35px;
   padding-right: 35px;
+  padding-top: 40px;
+  padding-bottom: 15px;
   font-size: 10px;
   font-weight: bold;
   border-radius: 5px;
-  border-color: rgba(51,121,204);
-  color: rgba(51,121,204);
+  background-color: #49b1bd;
+  border-color: #49b1bd;
+  color: white;
 }
 
 

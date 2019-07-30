@@ -29,26 +29,28 @@ class Post extends React.Component {
 
   determineColor = () => {
     if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'calm') {
-      return '#41D3BD'
+      return '#15f9d6'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'happy') {
-      return '#97F9F9'
+      return '#ffdf29'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'bored') {
-      return '#B6B8D6'
+      return '#f0b3f3'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'angry') {
-      return '#E3170A'
+      return '#ff1102'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'depressed') {
-      return '#083D77'
+      return '#1374e0'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'annoyed') {
-      return '#FED4E7'
+      return '#ef2480'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'optimistic') {
-      return '#FFE0B5'
+      return '#a3ff00'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'disgusted') {
-      return '#86BA90'
+      return '#d47c9e'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'sad') {
-      return '#1446A0'
+      return '#641cff'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'excited') {
-      return '#FFD335'
-    }
+      return '#f523d7'
+    } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'energetic') {
+      return '#ff8b32'
+    } 
   }
 
   updateLikes = () => {
@@ -93,8 +95,8 @@ class Post extends React.Component {
                 <p>{this.shortenDescription()}</p>
                 <p>Mood: {this.getMoodName()}
                 </p>
-                <button onClick={this.updateLikes}>{this.state.likes} likes!</button>
               </Link>
+                <button onClick={this.updateLikes}>{(this.state.likes > 1 || this.state.likes === 0) ? `${this.state.likes} likes` : `${this.state.likes} like`}!</button>
 
           </div>
            :

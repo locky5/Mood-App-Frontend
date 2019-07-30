@@ -73,8 +73,8 @@ class Post extends React.Component {
   }
 
   shortenDescription = () => {
-    if (this.props.description.length > 10) {
-      return this.props.description.slice(0, 10)
+    if (this.props.description.length > 20) {
+      return `${this.props.description.slice(0, 20)}...`
     } else {
       return this.props.description
     }
@@ -89,7 +89,7 @@ class Post extends React.Component {
 
               <Link to='/postpage'
                 style={{background: this.determineColor()}}
-                onClick={() => this.props.setStuff(this.props.id, this.props.comments)}
+                onClick={() => this.props.setStuff(this.props.id, this.props.comments, this.state.data, this)}
               >
                 <p>{`${this.props.user.name}:`}</p>
                 <p>{this.shortenDescription()}</p>

@@ -73,8 +73,8 @@ class Post extends React.Component {
   }
 
   shortenDescription = () => {
-    if (this.props.description.length > 10) {
-      return this.props.description.slice(0, 10)
+    if (this.props.description.length > 20) {
+      return `${this.props.description.slice(0, 20)}...`
     } else {
       return this.props.description
     }

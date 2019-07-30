@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 
 class NavBar extends React.Component {
   render() {
-    console.log(this.props.currentUser)
     return (
 
     <div className="navbar">

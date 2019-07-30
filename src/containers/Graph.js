@@ -5,18 +5,36 @@ import {Link} from 'react-router-dom'
 
 export default class Graph extends React.Component {
 
+  state = {
+    currentUserPosts: null
+  }
+
+  componentDidMount() {
+
+    if (this.props.currentUser) {
+
+      let filteredPosts = this.props.posts.filter(post => post.user.id === this.props.currentUser.id)
+
+      this.setState({
+        currentUserPosts: filteredPosts
+      })
+    }
+  }
+
   render() {
     return (
       <div>
         {
-          this.props.currentUser ?
+          this.props.currentUser && this.state.currentUserPosts ?
           <div>
             <br></br>
             <h1>Hi, {this.props.currentUser.name}</h1>
             <br></br>
 
             <h1>Here's Some Of Your Popular Posts: </h1>
-            {this.props.currentUser.posts.sort((a, b) =>
+            { this.state.currentUserPosts.length > 0 ?
+
+            this.state.currentUserPosts.sort((a, b) =>
             (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
               <div className="post">
                 <div className="post-it">
@@ -25,16 +43,23 @@ export default class Graph extends React.Component {
                   Likes: {post.likes}
                 </div>
               </div>
-            )}
+            )
+            :
+            <div>
+              <p>Start Posting!</p>
+              <Link to='/posts'>Posts
+              </Link>
+            </div>
+            }
 
             <br></br>
             <h2>Here's Some Analytics Of Your Moods:</h2>
             <ThisLineChart
-              posts={this.props.currentUser.posts}
+              posts={this.state.currentUserPosts}
               moods={this.props.moods}
             />
             <ThisPieChart
-              posts={this.props.currentUser.posts}
+              posts={this.state.currentUserPosts}
               moods={this.props.moods}
             />
           </div>

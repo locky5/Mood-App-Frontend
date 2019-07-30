@@ -13,8 +13,6 @@ import PostPage from './containers/PostPage'
 
 class App extends React.Component {
 
-
-
   // constructor(props) {
   //   super(props)
   //
@@ -46,7 +44,8 @@ class App extends React.Component {
     posts: null,
     moods: null,
     id: null,
-    comments: []
+    comments: [],
+    form: 1
   }
 
   setStuff = (thisId, thisComments) => {
@@ -116,8 +115,48 @@ class App extends React.Component {
       )
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    if (this.state.description) {
+      fetch('http://localhost:3000/api/v1/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          description: this.state.description,
+          likes: 0,
+          user_id: this.state.currentUser.id,
+          mood_id: this.state.form
+        })
+      })
+        .then(res => res.json())
+        .then(post =>
+          this.setState({
+            posts: [...this.state.posts, post]
+          })
+        )
+    } else if (!this.state.description) {
+      alert('You Need A Description!')
+    }
+  }
+
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleFormChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   render() {
-    console.log("App", this.state.currentUser)
     return (
       <div className="App">
           <NavBar currentUser={this.state.currentUser} logout={this.logout} />
@@ -125,10 +164,15 @@ class App extends React.Component {
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
           {this.state.id && this.state.comments ? <Route path="/postpage" render={() => <PostPage id={this.state.id} comments={this.state.comments} currentUser={this.state.currentUser} />}  /> : null}
-          <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} currentUser={this.state.currentUser}/>} />
-            {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
+          <Route path="/posts" render={() => <MainContainer username={this.state.username} setStuff={this.setStuff} currentUser={this.state.currentUser}
+          posts={this.state.posts}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange} handleFormChange={this.handleFormChange}
+          />} />
+        {this.state.posts && this.state.moods ? <Route path="/profile" render={() =>
                 <Graph
-                  posts={this.state.posts} moods={this.state.moods} currentUser={this.state.currentUser}
+                  posts={this.state.posts}
+                  moods={this.state.moods} currentUser={this.state.currentUser}
                 />
             } /> : null }
           </Switch>

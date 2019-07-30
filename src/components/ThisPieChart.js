@@ -6,9 +6,9 @@ export default class ThisPieChart extends React.Component {
 
   createPieGraph = () => {
     for (const post of this.props.posts) {
-      let mood = this.props.moods.filter(mood => mood.id === post.mood_id)[0]
-      let moodName = this.props.moods.filter(mood => mood.id === post.mood_id)[0].name
-      let timesOccured = this.props.posts.filter(thisPost => thisPost.mood_id === mood.id).length
+      let mood = this.props.moods.filter(mood => mood.id === post.mood.id)[0]
+      let moodName = this.props.moods.filter(mood => mood.id === post.mood.id)[0].name
+      let timesOccured = this.props.posts.filter(thisPost => thisPost.mood.id === mood.id).length
       this.setState({
         [moodName]: timesOccured
       })
@@ -56,7 +56,7 @@ export default class ThisPieChart extends React.Component {
     } else if (commonMood === 'annoyed') {
       return "Get over yourself."
     } else if (commonMood === 'disgusted') {
-      return "Look in a mirror"
+      return "Look in a mirror."
     } else if (commonMood === 'depressed') {
       return "There's a lot of people worse off than you."
     }

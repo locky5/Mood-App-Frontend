@@ -289,3 +289,13 @@ button {
   height: 100%;
   display: flex;
 }
+
+
+/* GIF STYLING */
+
+#gif {
+  display:block;
+  width:100%;
+  height:95vh;
+  overflow:hidden;
+}

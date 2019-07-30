@@ -60,6 +60,7 @@ class ProfileContainer extends React.Component {
 
         Search Posts By Mood
         <select class="select-css" onChange={this.props.findPostsByMood}>
+          <option value={0}>all</option>
           {this.createMoods()}
         </select>
 

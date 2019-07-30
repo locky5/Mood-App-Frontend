@@ -168,15 +168,15 @@ class App extends React.Component {
           <Switch>
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
             <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
-          {id && comments ? <Route path="/postpage" render={() => <PostPage id={id} comments={comments} currentUser={currentUser} clickedPost={clickedPost} moodData={this.state.moodData} />}  /> : null}
-          <Route path="/posts" render={() => <MainContainer username={username} setStuff={this.setStuff} currentUser={currentUser}
-          posts={this.state.posts}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange} handleFormChange={this.handleFormChange}/>} />
+            {id && comments ? <Route path="/postpage" render={() => <PostPage id={id} comments={comments} currentUser={currentUser} clickedPost={clickedPost} moodData={this.state.moodData} />}  /> : null}
+            <Route path="/posts" render={() => <MainContainer username={username} setStuff={this.setStuff} currentUser={currentUser}
+            posts={this.state.posts}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange} handleFormChange={this.handleFormChange}/>} />
             {posts && moods ? <Route path="/profile" render={() =>
-                <Graph
-                  posts={posts} moods={moods} currentUser={currentUser}
-                />
+              <Graph
+                posts={posts} moods={moods} currentUser={currentUser}
+              />
             } /> : null }
           </Switch>
         {/* <Chat {...this.state} /> */}

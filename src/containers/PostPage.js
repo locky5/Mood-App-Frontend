@@ -74,16 +74,14 @@ class PostPage extends React.Component {
   }
 
   render() {
-    
+
     return (
       <div className="post-page">
         <div className="comment-post">
           <div className="post" >
-            
             <div className="post-it">
-
               <a href='#'
-                style={{ background: this.determineColor() }}>
+                style={{background: this.determineColor()}}>
                 <p>{`${this.props.clickedPost.props.user.name}:`}</p>
                 <p>{this.props.clickedPost.props.description}</p>
               </a>

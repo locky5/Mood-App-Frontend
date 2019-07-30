@@ -50,7 +50,7 @@ class Post extends React.Component {
       return '#f523d7'
     } else if (this.state.data.filter(mood => mood.id === this.props.moodId)[0].name === 'energetic') {
       return '#ff8b32'
-    } 
+    }
   }
 
   updateLikes = () => {

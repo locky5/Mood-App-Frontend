@@ -66,11 +66,10 @@ export default class Graph extends React.Component {
         {
           this.props.currentUser && this.state.currentUserPosts ?
           <div>
-          
+
             <div className="profile-header">
               <FadeIn>
                 <h2>Hi, {this.props.currentUser.name} </h2>
-
                 <h4>Here are Some of Your Popular Posts: </h4>
               </FadeIn>
             </div>

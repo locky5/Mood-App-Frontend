@@ -74,29 +74,29 @@ export default class Graph extends React.Component {
 
               <h1>Here's Some Of Your Popular Posts: </h1>
             </FadeIn>
-            { this.state.currentUserPosts.length > 0 && this.state.data ?
+            {
+              this.state.currentUserPosts.length > 0 && this.state.data ?
 
-            this.state.currentUserPosts.sort((a, b) =>
-            (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
-                <div className="post" >
-                  <div className="post-it">
-                    <a href='#'
-                      style={{ background: this.determineColor(post.mood.id)}}>
-                      <p>{post.description}</p>
-                      <br></br>
-                      Likes: {post.likes}
-                    </a>
+              this.state.currentUserPosts.sort((a, b) =>
+              (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
+                  <div className="post" >
+                    <div className="post-it">
+                      <a href='#'
+                        style={{ background: this.determineColor(post.mood.id)}}>
+                        <p>{post.description}</p>
+                        <br></br>
+                        Likes: {post.likes}
+                      </a>
+                    </div>
                   </div>
-                </div>
-            )
-            :
-            <div>
-              <p>None Yet... Start Posting!</p>
-              <Link to='/posts'>Posts
-              </Link>
-            </div>
+              )
+              :
+              <div>
+                <p>None Yet... Start Posting!</p>
+                <Link to='/posts'>Posts
+                </Link>
+              </div>
             }
-
             <br></br>
             <h2>Here's Some Analytics Of Your Moods:</h2>
             <ThisLineChart

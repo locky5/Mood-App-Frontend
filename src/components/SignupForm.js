@@ -42,12 +42,41 @@ class SignupForm extends React.Component {
 
   render() {
     return (
+      <div>
       <div id="signup">
         <form onSubmit={this.handleSubmit}>
           Username: <input name="username" value={this.state.username} onChange={this.handleChange} />
           Password: <input name="password" value={this.state.password} onChange={this.handleChange} />
           <input type="submit" value="Submit"></input>
         </form>
+      </div>
+      <div>
+        <svg width="100%"
+            height="100%"
+            style={{background: "#082330"}}>
+          <symbol id="s-text">
+            <text text-anchor="middle"
+                  x="50%"
+                  y="35%"
+                  className="text--line"
+            >
+              Moody
+            </text>
+          </symbol>
+          <g className="g-ants">
+            <use xlinkHref="#s-text"
+              className="text-copy"></use>
+            <use xlinkHref="#s-text"
+              className="text-copy"></use>
+            <use xlinkHref="#s-text"
+              className="text-copy"></use>
+            <use xlinkHref="#s-text"
+              className="text-copy"></use>
+            <use xlinkHref="#s-text"
+              className="text-copy"></use>
+          </g>
+        </svg>
+      </div>
       </div>
     )
   }

@@ -10,11 +10,17 @@ class MainContainer extends React.Component {
   }
 
   findPostsByMood = (event) => {
-    let myFilteredPosts = this.props.posts.filter(post => post.mood.id === parseInt(event.target.value))
-    console.log(myFilteredPosts)
-    this.setState({
-      filteredPosts: myFilteredPosts
-    })
+    if (event.target.value !== 0) {
+      let myFilteredPosts = this.props.posts.filter(post => post.mood.id === parseInt(event.target.value))
+      this.setState({
+        filteredPosts: myFilteredPosts
+      })
+    }
+    if (event.target.value === "0") {
+      this.setState({
+        filteredPosts: this.props.posts
+      })
+    }
   }
 
   findText = (event) => {

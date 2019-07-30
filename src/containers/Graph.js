@@ -10,7 +10,6 @@ export default class Graph extends React.Component {
   }
 
   componentDidMount() {
-
     if (this.props.currentUser) {
 
       let filteredPosts = this.props.posts.filter(post => post.user.id === this.props.currentUser.id)
@@ -18,6 +17,33 @@ export default class Graph extends React.Component {
       this.setState({
         currentUserPosts: filteredPosts
       })
+    }
+  }
+
+  determineColor = (moodId) => {
+    console.log(moodId)
+    if (moodId === 1) {
+      return '#15f9d6'
+    } else if (moodId === 2) {
+      return '#ffdf29'
+    } else if (moodId === 6) {
+      return '#f0b3f3'
+    } else if (moodId === 8) {
+      return '#ff1102'
+    } else if (moodId === 11) {
+      return '#1374e0'
+    } else if (moodId === 9) {
+      return '#ef2480'
+    } else if (moodId === 3) {
+      return '#a3ff00'
+    } else if (moodId === 10) {
+      return '#d47c9e'
+    } else if (moodId === 7) {
+      return '#641cff'
+    } else if (moodId === 4) {
+      return '#f523d7'
+    } else if (moodId === 5) {
+      return '#ff8b32'
     }
   }
 
@@ -36,11 +62,16 @@ export default class Graph extends React.Component {
 
             this.state.currentUserPosts.sort((a, b) =>
             (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
-              <div className="post">
-                <div className="post-it">
-                  {post.description}
-                  <br></br>
-                  Likes: {post.likes}
+              <div className="comment-post">
+                <div className="post" >
+                  <div className="post-it">
+                    <a href='#'
+                      style={{ background: this.determineColor(post.mood.id)}}>
+                      <p>{post.description}</p>
+                      <br></br>
+                      Likes: {post.likes}
+                    </a>
+                  </div>
                 </div>
               </div>
             )

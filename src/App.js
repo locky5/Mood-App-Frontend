@@ -172,11 +172,11 @@ class App extends React.Component {
             posts={this.state.posts}
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange} handleFormChange={this.handleFormChange}/>} />
-              {posts && moods ? <Route path="/profile" render={() =>
-                  <Graph
-                    posts={posts} moods={moods} currentUser={currentUser}
-                  />
-              } /> : null }
+            {posts && moods ? <Route path="/profile" render={() =>
+              <Graph
+                posts={posts} moods={moods} currentUser={currentUser}
+              />
+            } /> : null }
           </Switch>
         {/* <Chat {...this.state} /> */}
       </div>

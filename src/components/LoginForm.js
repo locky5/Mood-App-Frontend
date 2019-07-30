@@ -42,12 +42,15 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div id="login">
-        <form onSubmit={this.handleSubmit}>
-          Username: <input name="username" onChange={this.handleChange} />
-          Password: <input name="password" onChange={this.handleChange} />
-          <input type="submit" value="Submit"></input>
-        </form>
+      <div>
+        <div id="login">
+          <form onSubmit={this.handleSubmit}>
+            Username: <input name="username" onChange={this.handleChange} />
+            Password: <input name="password" onChange={this.handleChange} />
+            <input type="submit" value="Submit"></input>
+          </form>
+        </div>
+        <img id="gif" src="https://i.imgur.com/7cCWmGI.gif"/>
       </div>
     )
   }

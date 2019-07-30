@@ -1,6 +1,5 @@
 import React from 'react'
 import Select from 'react-styled-select'
-import ProfileCard from '../components/ProfileCard'
 
 class ProfileContainer extends React.Component {
 
@@ -34,11 +33,7 @@ class ProfileContainer extends React.Component {
 
   render() {
     return (
-      <div className="profile-container">
-        <ProfileCard />
-        <br></br>
-        <br></br>
-        <br></br>
+      <div className="home-profile-container">
 
         Submit A New Post!
         <select class="select-css" name="form" onChange={this.props.handleFormChange}>

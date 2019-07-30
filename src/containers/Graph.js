@@ -62,20 +62,19 @@ export default class Graph extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="profile-container">
         {
           this.props.currentUser && this.state.currentUserPosts ?
           <div>
-            <br></br>
-            <FadeIn>
-              <h1>Hi, {this.props.currentUser.name} </h1>
 
-              <br></br>
-
-              <h1>Here's Some Of Your Popular Posts: </h1>
-            </FadeIn>
-            {
-              this.state.currentUserPosts.length > 0 && this.state.data ?
+            <div className="profile-header">
+              <FadeIn>
+                <h2>Hi, {this.props.currentUser.name} </h2>
+                <h4>Here are Some of Your Popular Posts: </h4>
+              </FadeIn>
+            </div>
+            <div className="user-posts">
+              { this.state.currentUserPosts.length > 0 && this.state.data ?
 
               this.state.currentUserPosts.sort((a, b) =>
               (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
@@ -96,17 +95,23 @@ export default class Graph extends React.Component {
                 <Link to='/posts'>Posts
                 </Link>
               </div>
-            }
-            <br></br>
-            <h2>Here's Some Analytics Of Your Moods:</h2>
-            <ThisLineChart
-              posts={this.state.currentUserPosts}
-              moods={this.props.moods}
-            />
-            <ThisPieChart
-              posts={this.state.currentUserPosts}
-              moods={this.props.moods}
-            />
+              }
+            </div>
+            <div className="chart-container">
+              <h4>Here are Some Analytics of Your Moods:</h4>
+              <div className="line-chart">
+                <ThisLineChart
+                  posts={this.state.currentUserPosts}
+                  moods={this.props.moods}
+                />
+              </div>
+              <div className="pie-chart">
+                <ThisPieChart
+                  posts={this.state.currentUserPosts}
+                  moods={this.props.moods}
+                />
+              </div>
+            </div>
           </div>
           :
           <div>

@@ -78,16 +78,18 @@ export default class ThisPieChart extends React.Component {
         {
           this.state ?
         <FadeIn>
-          <h3>
-            It looks like you're feeling {this.getCommonMood()} a lot...
-            <br></br>
-            <br></br>
-            <p>
-              Here's some advice to make you feel better:
+          <div className="pie-chart-text">
+            <h5>
+              It looks like you're feeling {this.getCommonMood()} a lot...
               <br></br>
-              {this.advice()}
-            </p>
-          </h3>
+              <br></br>
+              <p>
+                Here's some advice to make you feel better:
+                <br></br>
+                {this.advice()}
+              </p>
+            </h5>
+          </div>
         </FadeIn>
           :
           null

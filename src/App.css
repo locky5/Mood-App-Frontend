@@ -19,10 +19,16 @@
   overflow: scroll;
 }
 
+/* PROFILE CONTAINER STYLING (ACTUALLY FORM AND SORT CONTAINER) */
+
 .home-profile-container {
   /* border: solid 1px; */
   width: 20%;
   height: 750px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 45px;
 }
 
 .post {

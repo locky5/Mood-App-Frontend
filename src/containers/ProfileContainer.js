@@ -36,7 +36,7 @@ class ProfileContainer extends React.Component {
       <div className="home-profile-container">
 
         Submit A New Post!
-        <select class="select-css" name="form" onChange={this.props.handleFormChange}>
+        <select className="select-css" name="form" onChange={this.props.handleFormChange}>
           {this.createMoods()}
         </select>
 
@@ -54,7 +54,7 @@ class ProfileContainer extends React.Component {
         <br></br>
 
         Search Posts By Mood
-        <select class="select-css" onChange={this.props.findPostsByMood}>
+        <select className="select-css" onChange={this.props.findPostsByMood}>
           <option value={0}>all</option>
           {this.createMoods()}
         </select>
@@ -70,17 +70,15 @@ class ProfileContainer extends React.Component {
         <br></br>
         <br></br>
 
-        Order By Likes
         <button
-          type="submit" onClick={this.props.orderByLikes}>Go
+          type="submit" onClick={this.props.orderByLikes}>Order By Likes
         </button>
 
         <br></br>
         <br></br>
 
-        Order Alphabetically
         <button
-          type="submit" onClick={this.props.orderAlphabetically}>Go
+          type="submit" onClick={this.props.orderAlphabetically}>Order Alphabetically
         </button>
 
       </div>

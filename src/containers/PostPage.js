@@ -77,19 +77,32 @@ class PostPage extends React.Component {
 
     return (
       <div className="post-page">
-        <div className="comment-post">
-          <div className="post" >
-            <div className="post-it">
-              <a href='#'
-                style={{background: this.determineColor()}}>
-                <p>{`${this.props.clickedPost.props.user.name}:`}</p>
-                <p>{this.props.clickedPost.props.description}</p>
-              </a>
+        <div className="comment-post-container">
+          <div className="comment-post">
+            <div className="post" >
+              
+              <div className="post-it">
+
+                <a href='#'
+                  style={{ background: this.determineColor() }}>
+                  <p>{`${this.props.clickedPost.props.user.name}:`}</p>
+                  <p>{this.props.clickedPost.props.description}</p>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        <div className="comment-toggle">
-        <button onClick={this.postComment}>Make a Comment!</button>
+        <div className="comments-container">
+          <h1>Comments: </h1>
+          {
+            this.state.comments ?
+            this.state.comments.map(comment => <div>{comment.description}</div>)
+            :
+            null
+          }
+        </div>
+        <div className="comment-form">
+          <button onClick={this.postComment}>Make a Comment!</button>
           {
             this.state.makeComment ?
             <div className="comment-form">
@@ -98,15 +111,6 @@ class PostPage extends React.Component {
                 <button>Submit Comment</button>
               </form>
             </div>
-            :
-            null
-          }
-        </div>
-        <div className="comments-container">
-          <h1>Comments: </h1>
-          {
-            this.state.comments ?
-            this.state.comments.map(comment => <div>{comment.description}</div>)
             :
             null
           }

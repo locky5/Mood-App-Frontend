@@ -108,8 +108,8 @@ class PostPage extends React.Component {
 
                 <a href='#'
                   style={{ background: this.determineColor() }}>
-                  <p>{`${this.props.clickedPost.props.user.name}:`}</p>
-                  <p>{this.props.clickedPost.props.description}</p>
+                  <p><strong>{`${this.props.clickedPost.props.user.name}:`}</strong></p>
+                  <p>"{this.props.clickedPost.props.description}"</p>
                 </a>
               </div>
             </div>

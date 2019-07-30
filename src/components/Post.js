@@ -91,10 +91,9 @@ class Post extends React.Component {
                 style={{background: this.determineColor()}}
                 onClick={() => this.props.setStuff(this.props.id, this.props.comments, this.state.data, this)}
               >
-                <p>{`${this.props.user.name}:`}</p>
-                <p>{this.shortenDescription()}</p>
-                <p>Mood: {this.getMoodName()}
-                </p>
+                <p><strong>{`${this.props.user.name}:`}</strong></p>
+                <p>"{this.shortenDescription()}"</p>
+                <p>Mood: {this.getMoodName()}</p>
               </Link>
                 <button onClick={this.updateLikes}>
                   {(this.state.likes > 1 || this.state.likes === 0) ? `${this.state.likes} likes` : `${this.state.likes} like`}!

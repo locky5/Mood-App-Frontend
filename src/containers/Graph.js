@@ -82,8 +82,9 @@ export default class Graph extends React.Component {
                     <div className="post-it">
                       <a href='#'
                         style={{ background: this.determineColor(post.mood.id)}}>
-                        <p>{post.description}</p>
-                        <br></br>
+                        <p><strong>{`${post.user.name}:`}</strong></p>
+                        <p>"{post.description}"</p>
+                        
                         Likes: {post.likes}
                       </a>
                     </div>

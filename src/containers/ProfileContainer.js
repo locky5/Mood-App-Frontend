@@ -39,7 +39,7 @@ class ProfileContainer extends React.Component {
         <select className="select-css" name="form" onChange={this.props.handleFormChange}>
           {this.createMoods()}
         </select>
-
+        <br></br>
         <input
           name="description" onChange={this.props.handleChange}>
         </input>

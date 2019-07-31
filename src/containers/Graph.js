@@ -90,10 +90,11 @@ export default class Graph extends React.Component {
                   </div>
               )
               :
-              <div>
-                <p>None Yet... Start Posting!</p>
-                <Link to='/posts'>Posts
-                </Link>
+              <div className="no-posts" style={{marginLeft: '580px'}}>
+                <p style={{marginLeft: "80px"}}>None Yet...</p>
+                <img src="https://valleyrecovery.com/wp-content/uploads/2015/09/why.jpg" style={{width: "30%"}}/>
+                <br></br>
+                <p style={{marginLeft: "80px"}}>Start <Link to='/posts'> Posting! </Link></p>
               </div>
               }
             </div>

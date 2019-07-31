@@ -1,4 +1,5 @@
 import React from 'react'
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 
 class LoginForm extends React.Component {
 
@@ -43,29 +44,6 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <div id="login">
-          <form
-            className='form-signin' onSubmit={this.handleSubmit}
-          >
-            Username:
-            <input
-              type="text"
-              name="username"
-              onChange={this.handleChange}
-            />
-            Password:
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleChange}
-            />
-            <input
-              type="submit"
-              value="Submit"
-            >
-            </input>
-          </form>
-        </div>
         {/* <img id="gif" src="https://i.imgur.com/7cCWmGI.gif"/> */}
         <div>
           <svg width="100%"
@@ -93,6 +71,45 @@ class LoginForm extends React.Component {
                 className="text-copy"></use>
             </g>
           </svg>
+          <div id="login">
+          <MDBContainer>
+            <MDBRow>
+              <MDBCol md="6">
+                <form className='form-signin' onSubmit={this.handleSubmit}>
+                  <p className="h5 text-center mb-4">Sign in</p>
+                  <div className="grey-text">
+                    <MDBInput
+                      icon="envelope"
+                      group
+                      type="username"
+                      validate
+                      error="wrong"
+                      success="right"
+                      name="username"
+                      onChange={this.handleChange}
+                    />
+                    <MDBInput
+                      icon="lock"
+                      group
+                      type="password"
+                      validate
+                      name="password"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <MDBBtn
+                      type="submit"
+                      value="Submit"
+                      style={{color: "white"}}
+                    >Login
+                    </MDBBtn>
+                  </div>
+                </form>
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
+          </div>
         </div>
       </div>
     )

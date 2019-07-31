@@ -95,7 +95,7 @@ export default class Graph extends React.Component {
             <div className="user-posts">
               { this.state.currentUserPosts.length > 0 && this.state.data ?
 
-              this.state.currentUserPosts.sort((a, b) =>
+              [...this.state.currentUserPosts].sort((a, b) =>
               (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
                   <div className="post" >
                     <div className="post-it">

@@ -70,6 +70,14 @@ class ProfileContainer extends React.Component {
         <br></br>
         <br></br>
 
+        Search Posts By User
+        <input
+          onChange={this.props.findUser}>
+        </input>
+
+        <br></br>
+        <br></br>
+
         <button
           type="submit" onClick={this.props.orderByLikes}>Order By Likes
         </button>

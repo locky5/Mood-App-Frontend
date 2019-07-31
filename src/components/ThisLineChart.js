@@ -28,7 +28,7 @@ export default class ThisLineChart extends React.Component {
           xtitle="Time"
           ytitle="Mood"
           download={true}
-          title={this.getDate()}
+          title={"Mood Over Time: " + this.getDate()}
         />
       </div>
     )

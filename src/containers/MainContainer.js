@@ -24,14 +24,21 @@ class MainContainer extends React.Component {
   }
 
   findText = (event) => {
-    let myFilteredPosts = this.props.posts.filter(post => post.description.includes(event.target.value))
+    let myFilteredPosts = this.props.posts.filter(post => post.description.toLowerCase().includes(event.target.value.toLowerCase()))
+    this.setState({
+      filteredPosts: myFilteredPosts
+    })
+  }
+
+  findUser = (event) => {
+    let myFilteredPosts = this.props.posts.filter(post => post.user.name.toLowerCase().includes(event.target.value.toLowerCase()))
     this.setState({
       filteredPosts: myFilteredPosts
     })
   }
 
   orderByLikes = () => {
-    let myFilteredPosts = this.props.posts.sort((a, b) =>
+    let myFilteredPosts = [...this.props.posts].sort((a, b) =>
     (a.likes < b.likes) ? 1: -1)
     this.setState({
       filteredPosts: myFilteredPosts
@@ -39,7 +46,7 @@ class MainContainer extends React.Component {
   }
 
   orderAlphabetically = () => {
-    let myFilteredPosts = this.props.posts.sort((a, b) =>
+    let myFilteredPosts = [...this.props.posts].sort((a, b) =>
     (a.description > b.description) ? 1: -1)
     this.setState({
       filteredPosts: myFilteredPosts
@@ -53,6 +60,7 @@ class MainContainer extends React.Component {
             handleChange={this.props.handleChange} handleFormChange={this.props.handleFormChange} handleSubmit={this.props.handleSubmit}
             findPostsByMood={this.findPostsByMood}
             findText={this.findText}
+            findUser={this.findUser}
             orderByLikes={this.orderByLikes}
             orderAlphabetically={this.orderAlphabetically}
             currentUser={this.props.currentUser}

@@ -74,6 +74,7 @@ export default class ThisPieChart extends React.Component {
         }
         <PieChart
           data={this.state}
+          title="Mood Breakdown"
         />
         {
           this.state ?
@@ -86,7 +87,7 @@ export default class ThisPieChart extends React.Component {
               <p>
                 Here's some advice to make you feel better:
                 <br></br>
-                {this.advice()}
+                <i><b>{this.advice()}</b></i>
               </p>
             </h5>
           </div>

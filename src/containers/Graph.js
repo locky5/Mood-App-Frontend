@@ -70,6 +70,7 @@ export default class Graph extends React.Component {
             <div className="profile-header">
               <FadeIn>
                 <h2>Hi, {this.props.currentUser.name} </h2>
+                <i>Current Mood: {this.state.currentUserPosts[this.state.currentUserPosts.length - 1].mood.name}</i>
                 <h4>Here are Some of Your Popular Posts: </h4>
               </FadeIn>
             </div>
@@ -84,7 +85,7 @@ export default class Graph extends React.Component {
                         style={{ background: this.determineColor(post.mood.id)}}>
                         <p><strong>{`${post.user.name}:`}</strong></p>
                         <p>"{post.description}"</p>
-                        
+
                         Likes: {post.likes}
                       </a>
                     </div>
@@ -100,7 +101,7 @@ export default class Graph extends React.Component {
               }
             </div>
             <div className="chart-container">
-              <h4>Here are Some Analytics of Your Moods:</h4>
+              <h4>Here Are Some Analytics of Your Moods:</h4>
               <div className="line-chart">
                 <ThisLineChart
                   posts={this.state.currentUserPosts}

@@ -2,13 +2,15 @@ import React from 'react'
 import ThisLineChart from '../components/ThisLineChart'
 import ThisPieChart from '../components/ThisPieChart'
 import FadeIn from 'react-fade-in'
+import Post from '../components/Post'
 import {Link} from 'react-router-dom'
 
 export default class Graph extends React.Component {
 
   state = {
     currentUserPosts: null,
-    data: null
+    data: null,
+    postDelete: false
   }
 
   componentDidMount() {
@@ -22,6 +24,12 @@ export default class Graph extends React.Component {
     }
     this.renderMoods()
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.state.postDelete != nextState.postDelete
+  // }
+
+
 
   renderMoods = () => {
     fetch('http://localhost:3000/api/v1/moods')
@@ -60,6 +68,16 @@ export default class Graph extends React.Component {
     }
   }
 
+  // handleDelete(post) {
+  //   debugger
+  //   fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
+  //     method: "DELETE"
+  //   })
+  //   .then(this.setState({
+  //     postDelete: !this.state.postDelete
+  //   }))
+  // }
+
   render() {
     return (
       <div className="profile-container">
@@ -80,13 +98,13 @@ export default class Graph extends React.Component {
               (a.likes < b.likes) ? 1: -1).slice(0,4).map(post =>
                   <div className="post" >
                     <div className="post-it">
-                      <a href='#'
+                      <Link to='/postpage'
                         style={{ background: this.determineColor(post.mood.id)}}>
                         <p><strong>{`${post.user.name}:`}</strong></p>
                         <p>"{post.description}"</p>
                         
                         Likes: {post.likes}
-                      </a>
+                      </Link>
                     </div>
                   </div>
               )

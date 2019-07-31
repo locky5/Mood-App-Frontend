@@ -442,9 +442,21 @@ svg {
 }
 
 .user-posts {
+  /* border: solid 1px; */
   display: flex;
   width: 100%;
+  padding-bottom: 10px;
 }
+
+.user-posts .post {
+  /* border: solid 1px; */
+  width: 24%;
+  padding-left: 40px;
+}
+
+/* .user-posts .post .post-it button {
+  margin-right: 80px;
+} */
 
 .chart-container {
   text-align: center;

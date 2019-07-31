@@ -19,7 +19,7 @@ class PostPage extends React.Component {
       this.setState({
         comments: postComments
       })
-      }    
+      }
     )
   }
 
@@ -97,13 +97,13 @@ class PostPage extends React.Component {
   }
 
   render() {
-    
+
     return (
       <div className="post-page">
         <div className="comment-post-container">
           <div className="comment-post">
             <div className="post" >
-              
+
               <div className="post-it">
 
                 <a href='#'
@@ -122,7 +122,13 @@ class PostPage extends React.Component {
             <div className="comments-list">
             {
               this.state.comments ?
-              this.state.comments.map(comment => <div className="comment" >{`${comment.user.name}: ${comment.description}`}</div>)
+              this.state.comments.map(comment =>
+                <div className="comment" >
+                  <b>{`${comment.user.name}: `}</b>{`${comment.description}`}
+                  <br></br>
+                  <i>{`created at: ${comment.created_at.split('T').join(' ').slice(0,-5)}`}</i>
+                </div>
+              )
               :
               null
             }

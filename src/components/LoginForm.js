@@ -76,7 +76,7 @@ class LoginForm extends React.Component {
             <MDBRow>
               <MDBCol md="6">
                 <form className='form-signin' onSubmit={this.handleSubmit}>
-                  <p className="h5 text-center mb-4">Sign in</p>
+                  <p className="h5 text-center mb-4">Sign In</p>
                   <div className="grey-text">
                     <MDBInput
                       icon="envelope"

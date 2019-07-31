@@ -9,8 +9,8 @@ class NavBar extends React.Component {
 
       <Link to="/posts">Home</Link>
       <Link to="/profile">Profile</Link>
-      <Link to="/login">Log In</Link>
-      <Link to="/signup">Signup</Link>
+      <Link to="/login">Sign In</Link>
+      <Link to="/signup">Sign Up</Link>
       <div>
         {this.props.currentUser ?
           <button onClick={this.props.logout}>

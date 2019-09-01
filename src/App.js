@@ -12,6 +12,32 @@ import PostPage from './containers/PostPage'
 
 class App extends React.Component {
 
+  // constructor(props) {
+  //   super(props)
+  //
+  //   const sock = new SockJS('https://chat-server.azurewebsites.net/chat')
+  //
+  //   sock.onopen = () => {
+  //     console.log('connection open')
+  //   }
+  //
+  //   sock.onmessage = (e) => {
+  //     console.log('message received: ', e.data)
+  //   }
+  //
+  //   sock.onclose = () => {
+  //     console.log('closed')
+  //   }
+  //
+  //   this.state = {
+  //     actions: sock,
+  //     messages: [],
+  //     currentUser: null,
+  //     posts: null,
+  //     moods: null
+  //   }
+  // }
+
   state = {
     currentUser: null,
     posts: null,
@@ -172,7 +198,7 @@ class App extends React.Component {
                   username={username}
                   setStuff={this.setStuff}
                   currentUser={currentUser}
-                  posts={posts}
+                  posts={this.state.posts}
                   handleSubmit={this.handleSubmit}
                   handleChange={this.handleChange}
                   handleFormChange={this.handleFormChange}
@@ -195,6 +221,7 @@ class App extends React.Component {
               null
             }
           </Switch>
+          
       </div>
     )
   }
